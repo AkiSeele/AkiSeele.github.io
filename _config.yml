@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 舰舰的奇妙见闻
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
+author: Aki Seele
 language: en
 timezone: ''
 
@@ -106,3 +106,28 @@ deploy:
   repo: https://github.com/AkiSeele/AkiSeele.github.io.git # 比如：https://github.com/YunYouJun/yunyoujun.github.io
   branch: master # 默认使用 master 分支
   message: Update Hexo Static Content # 你可以自定义此次部署更新的说明
+
+
+server:
+  compress: true
+
+live2d:
+  enable: true # 是否开启live2d
+  scriptFrom: local # 脚本从本地引入
+  pluginRootPath: live2dw/ # 插件在站点上的根目录(相对路径)
+  pluginJsPath: lib/ # 脚本文件相对与插件根目录路径
+  pluginModelPath: assets/ # 模型文件相对与插件根目录路径
+  tagMode: false # 标签模式, 是否仅替换 live2d tag标签而非插入到所有页面中
+  debug: false # 调试, 是否在控制台输出日志
+  model:
+      use: hk416 # 填写放进live2d_models文件夹中的模型文件夹名字
+      scale: 1 # canvas 模型与canvas的缩放
+  display:
+    position: right
+    width: 250
+    height: 400
+  mobile:
+    show: true
+  react:
+    opacity: 2
+
