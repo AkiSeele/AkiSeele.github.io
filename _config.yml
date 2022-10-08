@@ -5,10 +5,10 @@
 # Site
 title: 舰舰的奇妙见闻
 subtitle: ''
-description: ''
+description: '希望自己从始至终不会变化'
 keywords:
 author: Aki Seele
-language: en
+language: zh-CN
 timezone: ''
 
 # URL
@@ -106,10 +106,6 @@ deploy:
   repo: https://github.com/AkiSeele/AkiSeele.github.io.git # 比如：https://github.com/YunYouJun/yunyoujun.github.io
   branch: master # 默认使用 master 分支
   message: Update Hexo Static Content # 你可以自定义此次部署更新的说明
-
-
-server:
-  compress: true
 
 live2d:
   enable: true # 是否开启live2d

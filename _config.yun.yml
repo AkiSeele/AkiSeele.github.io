@@ -1,5 +1,7 @@
+mode: auto
+
 avatar:
-  url: https://s1.ax1x.com/2022/09/29/xnahdJ.png # 你的头像图片地址
+  url: /image/tou.jpg # 你的头像图片地址
   rounded: true
   opacity: 1
   mickey_mouse: false
@@ -13,18 +15,20 @@ albums:
   enable: true
 
 pages:
-  - name: 我的小伙伴们
-    url: /links/
-    icon: ri:qq-fill
-    color: dodgerblue
-  - name: 都是我的翅膀
+  - name: 小可爱们
     url: /girls/
-    icon: ri:genderless-line
+    icon: fluent:animal-cat-28-filled
     color: dodgerblue
-  - name: 刹那的留影
+  - name: 留影册
     url: /albums/
     icon: material-symbols:all-inbox-sharp
     color: dodgerblue
+  
+github_issues:
+  enable: false
+
+github_discussions:
+  enable: false
 
 menu:
   home:
@@ -32,26 +36,54 @@ menu:
     icon: ri:home-4-line
   list:
     - type: archives
+      title: 文档
       path: /archives/
       icon: ri:archive-line
     - type: categories
+      title: 记录
       path: /categories/
       icon: ri:folder-2-line
     - type: tags
+      title: 标签
       path: /tags/
       icon: ri:price-tag-3-line
+      
   custom:
     title: 设置
-    path: https://yun.yunyoujun.cn
+    path: https://yun.yunyoujun.cn/guide/
     icon: ri:settings-line
+
+categories:
+- Diary
+
+tags:
+  动画: crimson
+  漫画: orange
+  Parcel: '#21374b'
+  学习: saddlebrown
+  MAD: crimson
+  教程: royalblue
+  笔记: dimgray
+  分享: '#0078e7'
+  随笔: mediumpurple
+  Blender: '#d04d2d'
+  Linux: '#2577b1'
+  中传: '#ccb44b'
+  部落: '#DD306A'
+  科幻: midnightblue
+  蚂蚁森林: '#54a892'
 
 social:
   - name: GitHub
     link: https://github.com/AkiSeele
     icon: ri:github-line
     color: '#181717'
+  - name: 哔哩哔哩动画
+    link: https://space.bilibili.com/12087145
+    icon: ri:bilibili-line
+    color: '#FF8EB3'
   - name: E-Mail
-    link: a2371445972@outlook.com
+    link: mailto:a2371445972@outlook.com
     icon: ri:mail-line
     color: '#8E71C1'
   - name: 微博
@@ -66,10 +98,7 @@ social:
     link: https://www.zhihu.com/people/zong-shi-ri-bo-xi-shan
     icon: ri:zhihu-line
     color: '#0084FF'
-  - name: 哔哩哔哩动画
-    link: https://space.bilibili.com/12087145
-    icon: ri:bilibili-line
-    color: '#FF8EB3'
+  
   # - name: Twitter
   #   icon: ri:twitter-line
   #   color: '#1da1f2'
@@ -96,13 +125,13 @@ banner:
     icon: ri:arrow-down-s-line
 
 notice:
-  enable: true
+  enable: false
   content: 好耶！是大冒险!
 
 
 bg_image:
   enable: true
-  url: /image/珂朵莉1.png
+  url: https://s1.ax1x.com/2022/09/30/xuyNTK.jpg
   # dark:
   # blur: 30px # 设置背景模糊程度
   opacity: 0.8
@@ -142,3 +171,46 @@ girls:
 
 wordcloud:
   enable: true
+
+comment:
+  enable: false
+
+
+# 打赏
+reward:
+  enable: false
+  comment: 我很穷，请给我钱（伸手）
+  methods:
+    - name: 支付宝
+      path: /image/zfbQian.jpg
+      color: '#00A3EE'
+      icon: ri:alipay-line
+      # link: https://xxxx
+    - name: QQ 支付
+      path: /image/qqQian.jpg
+      color: '#12B7F5'
+      icon: ri:qq-line
+    - name: 微信支付
+      path: /image/wxQian.jpg
+      color: '#2DC100'
+      icon: ri:wechat-pay-line
+
+post_edit:
+  enable: true
+  url: https://github.com/AkiSeele/AkiSeele.github.io
+
+
+# 文章#
+# 内容卡片
+post_card:
+  opacity: 0.6
+
+say:
+  enable: true
+  api: /data/sentences.json
+  # https://cdn.jsdelivr.net/gh/ElpsyCN/say@gh-pages/sentences.json
+  # https://developer.hitokoto.cn/sentence/
+  hitokoto:
+    enable: false
+    api: https://v1.hitokoto.cn
+
