@@ -9,6 +9,6 @@ albums:
     desc: 舰舰的奇妙冒险
   - caption: 提瓦特冒险之旅
     url: /albums/genshin.html
-    cover: https://s1.ax1x.com/2022/09/30/xu6KBt.jpg
+    cover: https://s1.ax1x.com/2022/10/08/xGJGMn.jpg
     desc: 提瓦特冒险之旅
 ---

@@ -1,9 +1,11 @@
 ---
 title: Hexo少前live2d使用指南
+date: 2022-10-08
+updated: 2022-10-09
 tags:
-  - 笔记
+  - 教程
 categories:
-  - 笔记
+  - 教程
 # type: yuque
 # url: 
 ---

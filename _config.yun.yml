@@ -57,8 +57,10 @@ categories:
 - Diary
 
 tags:
-  动画: crimson
+  动画: orange
   漫画: orange
+  游戏: orange
+  小说: orange
   Parcel: '#21374b'
   学习: saddlebrown
   MAD: crimson
@@ -68,8 +70,6 @@ tags:
   随笔: mediumpurple
   Blender: '#d04d2d'
   Linux: '#2577b1'
-  中传: '#ccb44b'
-  部落: '#DD306A'
   科幻: midnightblue
   蚂蚁森林: '#54a892'
 
@@ -131,13 +131,18 @@ notice:
 
 bg_image:
   enable: true
-  url: https://s1.ax1x.com/2022/09/30/xuyNTK.jpg
+  url: https://s1.ax1x.com/2022/10/08/xGJ5zd.jpg
   # dark:
   # blur: 30px # 设置背景模糊程度
   opacity: 0.8
 
 
 footer:
+  live_time:
+    enable: true
+    prefix: 本博客努力运行了
+    suffix: ᕦ(･ㅂ･)ᕤ
+    start_time: '2022-10-01T00:00:00'
   icon:
     name: ri:cloud-line
     animated: true
@@ -147,7 +152,12 @@ footer:
   powered:
     enable: false
   support:
-    enable: false
+    enable: true
+    title: 又拍云
+    link: https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral
+    logo: 
+    prefix: 本网站由
+    suffix: 提供 CDN 加速
 
 fireworks:
   enable: true
@@ -156,25 +166,45 @@ fireworks:
     - '234, 80, 144'
     - '92, 160, 225'
 
-# 关闭 highlight
-highlight:
-  enable: false
-# 启用 prism
-prismjs:
-  enable: true
-  preprocess: true
-  line_number: false
-  tab_replace: ''
-
 girls:
   enable: true
 
 wordcloud:
   enable: true
 
+# 评论
 comment:
-  enable: false
+  enable: true
 
+waline:
+  enable: true
+  serverURL: https://example.akibro.top
+  # visitor: true
+  comment: false
+
+
+giscus:
+  enable: false
+  repo:
+  repo-id:
+  category:
+  category-id:
+  mapping: pathname
+  reactions-enabled: 1
+  emit-metadata: 0
+  theme: light
+
+
+# 开启一键复制按钮
+codeblock:
+  copy_btn: true
+
+# 设置文章的分享版权
+creative_commons:
+  license: by-nc-sa
+  post: false
+  language: deed.zh
+  clipboard: false
 
 # 打赏
 reward:
@@ -197,7 +227,7 @@ reward:
 
 post_edit:
   enable: true
-  url: https://github.com/AkiSeele/AkiSeele.github.io
+  url: https://github.com/AkiSeele/AkiSeele.github.io/tree/hexo/source/
 
 
 # 文章#

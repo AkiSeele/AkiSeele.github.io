@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: http://zsrbxs.xyz
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -44,16 +44,16 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace: ''
   wrap: true
   hljs: false
 prismjs:
-  enable: false
+  enable: true
   preprocess: true
-  line_number: true
+  line_number: false
   tab_replace: ''
 
 # Home page setting
@@ -119,11 +119,10 @@ live2d:
       use: hk416 # 填写放进live2d_models文件夹中的模型文件夹名字
       scale: 1 # canvas 模型与canvas的缩放
   display:
-    position: right
+    position: left
     width: 250
     height: 400
   mobile:
     show: true
   react:
     opacity: 2
-

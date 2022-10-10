@@ -51,7 +51,7 @@ console.log(arr.sort((a,b)=>{
 
 ## 获取openID
 
-```vue
+```js
 <script>
     uni.login({
         success: res => {

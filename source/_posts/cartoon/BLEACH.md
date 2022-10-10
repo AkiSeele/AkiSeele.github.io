@@ -6,9 +6,12 @@ tags:
 categories:
   - ACGN
   - 漫画
+hide: index
 ---
 
    
-
+> 漫画地址:  
+> [mangabz漫画](https://www.mangabz.com/1bz/)       
+> [bilibili漫画](https://manga.bilibili.com/detail/mc24726?from=manga_search)
 ------
 
