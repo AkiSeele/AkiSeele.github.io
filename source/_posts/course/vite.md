@@ -517,7 +517,7 @@ plugins: [
 
 
 
->  配置到这应该就差不多了，下面可能会增加一些有用的东西
+>  配置到这应该就差不多了，下面可能会增加一些有用的东西,略过了eslint的配置
 
 <div class="text-center">
   <img src="/image/bqb1.jpg" alt="portrait" >
@@ -544,18 +544,6 @@ plugins: [
          iconDirs: [path.resolve(process.cwd(), "src/assets/svg")],
          // 指定symbolId格式
          symbolId: "icon-[dir]-[name]",
-
-         /**
-       * 自定义插入位置
-       * @default: body-last
-       */
-         // inject?: 'body-last' | 'body-first'
-
-         /**
-       * custom dom id
-       * @default: __svg__icons__dom__
-       */
-         // customDomId: '__svg__icons__dom__',
      }),
    ...
  ],
