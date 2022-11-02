@@ -60,6 +60,11 @@ xAxis: {
     },
     inverse: true,	 //倒序
 }
+
+//  点击图表触发事件
+this.myChart.on("click", function (param) {
+  console.log('点击了图表');
+});
 ```
 
 ### 饼图
@@ -71,6 +76,17 @@ series: [
         radius: '50%',
         minAngle: 20, //最小角度
         startAngle: 70, //起始角度
+        // label也可以使用自定义，用法同上面的tooltip
+        /* label: {
+          formatter: function(params) {
+            return (
+              params.name +
+              "：" +
+              ((params.value / 420) * 100).toFixed(2) +
+              "%"
+            );
+          },
+        }, */
         // emphasis高亮状态的扇区和标签样式
         emphasis: {
             disabled: false,	// 鼠标移入是否高亮显示，true为禁用（在图形非常多的时候可以关闭以提升交互流畅性）
@@ -82,28 +98,6 @@ series: [
                 fontSize: '20',
                 fontWeight: 'bold'
             }
-            // 也可以使用自定义，用法同上面的tooltip
-             /* label: {
-                formatter: function(params) {
-                  const a = [
-                    { value: 24, name: "意见建议" },
-                    { value: 88, name: "申述" },
-                    { value: 14, name: "求决" },
-                    { value: 44, name: "揭发控告" },
-                    { value: 56, name: "心理辅导" },
-                    { value: 19, name: "法律服务" },
-                    { value: 120, name: "婚宴协调" },
-                    { value: 30, name: "困境帮扶" },
-                    { value: 30, name: "其他" },
-                  ];
-                  return (
-                    params.name +
-                    "：" +
-                    ((params.value / 420) * 100).toFixed(2) +
-                    "%"
-                  );
-                },
-              }, */
         },
     },
 ],

@@ -139,7 +139,7 @@ bg_image:
 
 footer:
   live_time:
-    enable: true
+    enable: false
     prefix: 本博客努力运行了
     suffix: ᕦ(･ㅂ･)ᕤ
     start_time: '2022-10-01T00:00:00'
@@ -147,7 +147,7 @@ footer:
     name: ri:cloud-line
     animated: true
     color: '#0078E7'
-    url: 
+    url: https://github.com/AkiSeele
     title: 可爱滴捏
   powered:
     enable: false
@@ -156,9 +156,9 @@ footer:
     icp: 鄂ICP备2022016601号-1
     # 公安备案
     gongan:
-      enable: false
-      text: 京公网安备 XXXXXXXX 号
-      id: XXXXXXXX
+      enable: true
+      text: 粤公网安备 44030902003626号
+      id: 44030902003626
   support:
     enable: true
     title: 又拍云

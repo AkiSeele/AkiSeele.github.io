@@ -1,394 +1,624 @@
 ---
 title: Vite项目搭建
-date: 2022-10-17
-updated: 
+date: 2022-11-02
+updated: 2022-11-02
 tags:
   - 教程
 categories:
   - 教程
 # type: yuque
-# url: 
+# url:
 ---
 
-## 目录结构
-```
-├── README.md
-├── index.html           项目入口
-├── mock                 mock目录
-├── package.json
-├── public
-├── src
-│   ├── App.vue          主应用
-│   ├── api              请求中心
-│   ├── assets           资源目录（图片、less、css等）
-│   ├── components       项目组件
-│   ├── constants        常量
-│   ├── env.d.ts         全局声明
-│   ├── main.ts          主入口
-│   ├── pages            页面目录
-│   ├── router           路由配置
-│   ├── types            ts类型定义
-│   ├── store            pinia状态管理
-│   └── utils            基础工具包
-├── test                 测试用例
-├── tsconfig.json        ts配置
-├── .eslintrc.js         eslint配置
-├── .prettierrc.json     prettier配置
-├── .gitignore           git忽略配置
-└── vite.config.ts       vite配置
-```
+
 
 ## 创建脚手架
-> 使用pnpm
+
+建议使用 pnpm 搭建项目雏形
+
+> pnpm create vite
+
+## 目录结构
 
 ```
-pnpm create vite
+
+├── pubilc
+└── src
+    ├── api                       // 接口请求
+    ├── assets                    // 静态资源
+    ├── common                    // 通用类库
+    ├── components                // 公共组件
+    ├── router                    // 路由配置
+    ├── store                     // 状态管理
+    ├── style                     // 通用样式
+    ├── utils                     // 工具函数
+    ├── views                     // 页面组件
+    ├── App.vue
+    ├── main.ts
+    ├── style.css
+├── index.html
+├── package.json
+├── README.md
+├── tsconfig.json                 // TypeScript 配置文件
+└── vite.config.ts                // Vite 配置文件
 ```
 
-## 约束代码风格
-### Eslint 
-#### 安装
-```
-# eslint 安装
-pnpm add eslint
-# eslint 插件安装
-pnpm add eslint-plugin-vue
 
-pnpm add @typescript-eslint/eslint-plugin
 
-pnpm add eslint-plugin-prettier
+## 配置@路径
 
-# typescript parser
-pnpm add @typescript-eslint/parser
-```
+> [掘金文章](https://juejin.cn/post/7006213924588617735)
 
-#### 新建.eslintrc.js
-> 配置eslint效验规则
-```js
-module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    node: true,
-    es2021: true,
-  },
-  parser: 'vue-eslint-parser',
-  extends: [
-    'eslint:recommended',
-    'plugin:vue/vue3-recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
-    // eslint-config-prettier 的缩写
-    'prettier',
-  ],
-  parserOptions: {
-    ecmaVersion: 12,
-    parser: '@typescript-eslint/parser',
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
+- ts 环境无法正确识别 node 相关的包的类型声明，需要先配置 node 的 types 依赖
+  > pnpm add @types/node -D
+- tsconfig.json 配置
+
+```json
+resolve: {
+    alias: {
+        "@": resolve(__dirname, 'src'), // 路径别名
     },
-  },
-  // eslint-plugin-vue @typescript-eslint/eslint-plugin eslint-plugin-prettier的缩写
-  plugins: ['vue', '@typescript-eslint', 'prettier'],
-  rules: {
-    '@typescript-eslint/ban-ts-ignore': 'off',
-    '@typescript-eslint/no-unused-vars': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-var-requires': 'off',
-    '@typescript-eslint/no-empty-function': 'off',
-    '@typescript-eslint/no-use-before-define': 'off',
-    '@typescript-eslint/ban-ts-comment': 'off',
-    '@typescript-eslint/ban-types': 'off',
-    '@typescript-eslint/no-non-null-assertion': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    'no-var': 'error',
-    'prettier/prettier': 'error',
-    // 禁止出现console
-    'no-console': 'warn',
-    // 禁用debugger
-    'no-debugger': 'warn',
-    // 禁止出现重复的 case 标签
-    'no-duplicate-case': 'warn',
-    // 禁止出现空语句块
-    'no-empty': 'warn',
-    // 禁止不必要的括号
-    'no-extra-parens': 'off',
-    // 禁止对 function 声明重新赋值
-    'no-func-assign': 'warn',
-    // 禁止在 return、throw、continue 和 break 语句之后出现不可达代码
-    'no-unreachable': 'warn',
-    // 强制所有控制语句使用一致的括号风格
-    curly: 'warn',
-    // 要求 switch 语句中有 default 分支
-    'default-case': 'warn',
-    // 强制尽可能地使用点号
-    'dot-notation': 'warn',
-    // 要求使用 === 和 !==
-    eqeqeq: 'warn',
-    // 禁止 if 语句中 return 语句之后有 else 块
-    'no-else-return': 'warn',
-    // 禁止出现空函数
-    'no-empty-function': 'warn',
-    // 禁用不必要的嵌套块
-    'no-lone-blocks': 'warn',
-    // 禁止使用多个空格
-    'no-multi-spaces': 'warn',
-    // 禁止多次声明同一变量
-    'no-redeclare': 'warn',
-    // 禁止在 return 语句中使用赋值语句
-    'no-return-assign': 'warn',
-    // 禁用不必要的 return await
-    'no-return-await': 'warn',
-    // 禁止自我赋值
-    'no-self-assign': 'warn',
-    // 禁止自身比较
-    'no-self-compare': 'warn',
-    // 禁止不必要的 catch 子句
-    'no-useless-catch': 'warn',
-    // 禁止多余的 return 语句
-    'no-useless-return': 'warn',
-    // 禁止变量声明与外层作用域的变量同名
-    'no-shadow': 'off',
-    // 允许delete变量
-    'no-delete-var': 'off',
-    // 强制数组方括号中使用一致的空格
-    'array-bracket-spacing': 'warn',
-    // 强制在代码块中使用一致的大括号风格
-    'brace-style': 'warn',
-    // 强制使用骆驼拼写法命名约定
-    camelcase: 'warn',
-    // 强制使用一致的缩进
-    indent: 'off',
-    // 强制在 JSX 属性中一致地使用双引号或单引号
-    // 'jsx-quotes': 'warn',
-    // 强制可嵌套的块的最大深度4
-    'max-depth': 'warn',
-    // 强制最大行数 300
-    // "max-lines": ["warn", { "max": 1200 }],
-    // 强制函数最大代码行数 50
-    // 'max-lines-per-function': ['warn', { max: 70 }],
-    // 强制函数块最多允许的的语句数量20
-    'max-statements': ['warn', 100],
-    // 强制回调函数最大嵌套深度
-    'max-nested-callbacks': ['warn', 3],
-    // 强制函数定义中最多允许的参数数量
-    'max-params': ['warn', 3],
-    // 强制每一行中所允许的最大语句数量
-    'max-statements-per-line': ['warn', { max: 1 }],
-    // 要求方法链中每个调用都有一个换行符
-    'newline-per-chained-call': ['warn', { ignoreChainWithDepth: 3 }],
-    // 禁止 if 作为唯一的语句出现在 else 语句中
-    'no-lonely-if': 'warn',
-    // 禁止空格和 tab 的混合缩进
-    'no-mixed-spaces-and-tabs': 'warn',
-    // 禁止出现多行空行
-    'no-multiple-empty-lines': 'warn',
-    // 禁止出现;
-    semi: ['warn', 'never'],
-    // 强制在块之前使用一致的空格
-    'space-before-blocks': 'warn',
-    // 强制在 function的左括号之前使用一致的空格
-    // 'space-before-function-paren': ['warn', 'never'],
-    // 强制在圆括号内使用一致的空格
-    'space-in-parens': 'warn',
-    // 要求操作符周围有空格
-    'space-infix-ops': 'warn',
-    // 强制在一元操作符前后使用一致的空格
-    'space-unary-ops': 'warn',
-    // 强制在注释中 // 或 /* 使用一致的空格
-    // "spaced-comment": "warn",
-    // 强制在 switch 的冒号左右有空格
-    'switch-colon-spacing': 'warn',
-    // 强制箭头函数的箭头前后使用一致的空格
-    'arrow-spacing': 'warn',
-    'no-var': 'warn',
-    'prefer-const': 'warn',
-    'prefer-rest-params': 'warn',
-    'no-useless-escape': 'warn',
-    'no-irregular-whitespace': 'warn',
-    'no-prototype-builtins': 'warn',
-    'no-fallthrough': 'warn',
-    'no-extra-boolean-cast': 'warn',
-    'no-case-declarations': 'warn',
-    'no-async-promise-executor': 'warn',
-  },
-  globals: {
-    defineProps: 'readonly',
-    defineEmits: 'readonly',
-    defineExpose: 'readonly',
-    withDefaults: 'readonly',
-  },
+    extensions: ['.js', '.json', '.ts'] // 使用路径别名时想要省略的后缀名，可以自己 增减
+},
+```
+
+
+
+> 别名一般都是配置的文件目录，所以 key 和 value 都需要加上后缀 /\*
+
+- vite.config.ts 配置
+
+```json
+"compilerOptions" : {
+    // ...
+    "baseUrl": ".", // 用于设置解析非相对模块名称的基本目录，相对模块不会受到baseUrl的影响
+    "paths": { // 用于设置模块名到基于baseUrl的路径映射
+        "@/*": ["src/*"]
+    }
+    // ...
 }
 ```
-#### 新建.eslintignore
-```
-# eslint 忽略检查 (根据项目需要自行添加)
-node_modules
-dist
+
+
+## 配置服务器和代理配置 
+
+> [官方文档](https://cn.vitejs.dev/config/server-options.html)
+
+```js
+server: {
+  // 指定服务器应该监听哪个 IP 地址。 如果将此设置为 0.0.0.0 或者 true 将监听所有地址，包括局域网和公网地址。
+  // 默认为 'localhost'，即仅能本机访问
+  host: "0.0.0.0",
+  // 启动端口
+  port: 3422,
+  // 设为 true 时若端口已被占用则会直接退出，而不是尝试下一个可用端口。
+  strictPort: false,
+  // HMR 连接配置（用于 HMR websocket 必须使用不同的 http 服务器地址的情况，或者禁用 hmr 模块），一般省略
+  hmr: {
+    host: "127.0.0.1",
+    port: 8080,
+  },
+  // 配置启动时是否自动打开网页，是字符串时表示打开某个特定路径
+  open: false,
+  // 自定义代理规则，用来配合后端服务进行接口调用等。
+  // 默认使用 [http-proxy](https://github.com/http-party/node-http-proxy) 模块，完整配置见官方仓库
+  proxy: {
+    "/api": {
+       // 这是本地网易云api服务开启的地址,方便后续使用网易云api
+       // 怎么使用网易云api这里略过,可自己根据文档开启https://github.com/w4ctech/NeteaseCloudMusicApi
+       target: "http://localhost:3000",
+       changeOrigin: true,
+       rewrite: (path) => path.replace(/^\/api/, ""),
+     },
+  },
+},
 ```
 
-### Prettier
-#### 安装
-```
-# 安装 prettier
-pnpm add prettier
-```
-#### 解决eslint冲突
-> 解决 ESLint 中的样式规范和 prettier 中样式规范的冲突，以 prettier 的样式规范为准，使 ESLint 中的样式规范自动失效
-```
-# 安装插件 eslint-config-prettier
-pnpm add eslint-config-prettier
-```
-#### 新建.prettierrc.js
+- eslint 、 prettier
+> 目前跳过此部分
+
+
+## 配置 router
+
+> 安装 pnpm add vue-router    [官方文档](https://router.vuejs.org/zh/guide/)
+
 ```js
-配置 prettier 格式化规则
-module.exports = {
-  tabWidth: 2,
-  jsxSingleQuote: true,
-  jsxBracketSameLine: true,
-  printWidth: 100,
-  singleQuote: true,
-  semi: false,
-  overrides: [
-    {
-      files: '*.json',
-      options: {
-        printWidth: 200,
+// 创建 src/router/index.ts 文件
+// 没有的文件自己按照目录创建
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+
+const routes: Array<RouteRecordRaw> = [
+  {
+    path: "/login",
+    name: "Login",
+    meta: {
+      title: "登录",
+      keepAlive: true,
+      requireAuth: false,
+    },
+    component: () => import("@/views/login/login.vue"),
+  },
+  {
+    path: "/",
+    name: "Index",
+    meta: {
+      title: "首页",
+      keepAlive: true,
+      requireAuth: true,
+    },
+    component: () => import("@/views/index.vue"),
+  },
+];
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
+export default router;
+```
+
+```js
+// 挂在main.ts
+import { createApp } from 'vue'
+import './style.css'
+import App from './App.vue'
+import router from "@/router";
+
+const app = createApp(App)
+
+app.use(router)
+
+app.mount("#app");
+```
+
+```vue
+// App.vue
+<template>
+  <!-- 放置路由容器 -->
+  <RouterView />
+  <button @click="lickLogin">跳到登陆页面</button>
+</template>
+
+<script setup lang="ts">
+import { useRouter } from "vue-router";
+
+const router=useRouter()
+
+function lickLogin() {
+  router.push('/login')
+}
+</script>
+
+<style scoped>
+</style>
+```
+
+
+
+## 配置 pinia 状态管理
+
+> 安装  pnpm add pinia    [大菠萝官方文档](https://pinia.web3doc.top/introduction.html)
+
+- router文件夹下新建index.ts和 user.ts
+
+  ```js
+  // index.ts
+  import { createPinia } from "pinia";
+  
+  const store = createPinia();
+  
+  export default store;
+  
+  
+  // user.ts
+  import { defineStore } from "pinia";
+  
+  export const useUserStore = defineStore("user", {
+    state: (): StateTs => {
+      return {
+        name: "Hello Pinia",
+      };
+    },
+    actions: {
+      updateName(name: string | number) {
+        this.name = name;
       },
     },
-  ],
-  arrowParens: 'always',
-}
-```
-#### 新建.prettierignore
-```
-# 忽略格式化文件 (根据项目需要自行添加)
-node_modules
-dist
-```
-
-#### package.json 配置
-```
-{
-  "script": {
-    "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
-    "prettier": "prettier --write ."
+  });
+  
+  interface StateTs {
+    name: string | number;
   }
-}
-```
-### 使用
-```
-# eslint 检查
-pnpm lint
-# prettier 自动格式化
-pnpm prettier
-```
+  ```
 
-## 配置scss预处理器
-### 安装
+- main.ts 引入
+
+  ```js
+  import { createApp } from 'vue'
+  import { createPinia } from "pinia";
+  import './style.css'
+  import App from './App.vue'
+  
+  const app = createApp(App)
+  const pinia = createPinia();
+  pinia.use(piniaPluginPersistedstate)
+  
+  app.use(pinia);
+  app.mount('#app')
+  ```
+
+- 页面使用
+
+  ```vue
+  // views/index.vue 下面
+  <template>
+    <div>
+      <h1 class="test">首页index</h1>
+      <h2>Store： {{ userStore.name }}</h2>
+    </div>
+    
+  </template>
+  
+  <script setup lang="ts">
+  import { useUserStore } from "@/store/user"
+  
+  const userStore = useUserStore()
+  console.log(userStore.name);
+  </script>
+  
+  <style scoped lang="scss">
+  .test {
+    color: $test-color;
+  }
+  </style>
+  ```
+
+
+
+## 配置 scss 预处理器
+
+- 安装
+
 ```
-pnpm add dart-sass
 pnpm add sass
 ```
-### 配置全局 scss 
-在`src/assets`下新增`style`文件夹，用来存放全局样式文件
-新建`main.scss`,设置一个变量
+
+- 配置全局 scss
+
+在`style`下新增`main.scss`文件夹，用来存放全局样式文件
+
 ```
+// main.scss 设置一个全局变量
 $test-color: red;
 ```
-配置`vite.config.ts`
+
+- 配置`vite.config.ts`
+
 ```
 css:{
   preprocessorOptions:{
     scss:{
-      additionalData:'@import "./src/assets/style/main.scss";'
+      additionalData: '@import "@/style/main.scss";',
     }
   }
 },
 这样就可以全局使用scss中定义的变量了
 ```
-组件中使用
+
+- 组件中使用
+
 ```
+// 不用引入直接使用即可
 .test{
   color: $test-color;
 }
 ```
 
-## 路由
-> [官方文档](https://router.vuejs.org/zh/introduction.html)
+
+
+## 配置自动引入插件
+
+> 安装 pnpm add unplugin-auto-import    [掘金文章](https://juejin.cn/post/7050668133404639268)
+
+```json
+// vite.config.js
+import AutoImport from "unplugin-auto-import/vite"
+...
+plugins: [
+    [vue()],  // 网上配置都没有留下这个，但是我不加上会报错
+    AutoImport({
+        // 自动导入vue、vue-router、pinia相关函数
+        imports: ["vue", "vue-router", "pinia"], 
+        dts: "src/auto-import.d.ts", // 生成 `auto-import.d.ts` 全局声明
+    }),
+...
+],
 ```
-# 安装路由
-pnpm add vue-router
-```
-> src/router/index.ts，没有的话就创建
-```ts
-router.ts内容： 
-import { createRouter, RouteRecordRaw, createWebHashHistory } from 'vue-router'
-const routes : Array <RouteRecordRaw> = [
-    {
-        path: '/a',
-        name: 'home',
-        component:()=>import('../views/teacher/index.vue'),
+
+
+
+## 配置axios拦截器
+
+> 安装 pnpm add axios   [官方文档](https://www.axios-http.cn/docs/intro)
+
+- api文件夹下新建index.ts
+
+  ```ts
+  // 没有封装,只是方便配置拦截器
+  // 还没有写状态码对于提示，因为咱的后端没整什么规范（我也是）,后续有需要自己跳转，这里啥也没配置
+  import axios from "axios";
+  
+  const AxiosToken = axios.create({
+    // baseURL 将自动加在 `url` 前面，除非 `url` 是一个绝对 URL。
+    // 这里的'/api'是为了代理，要和vite.config.ts里的proxy保持一致
+    baseURL: "/api",
+    // 指定请求超时的毫秒数。
+    timeout: 10000,
+    // 自定义请求头
+    headers: { "X-Requested-With": "XMLHttpRequest" },
+  });
+  
+  // 添加请求拦截器
+  AxiosToken.interceptors.request.use(
+    (config) => {
+      // 在发送请求之前做些什么
+      return config;
+    },
+    (error) => {
+      // 对请求错误做些什么
+      return Promise.reject(error);
     }
-]
+  );
+  
+  // 添加响应拦截器
+  AxiosToken.interceptors.response.use(
+    (response) => {
+      // 2xx 范围内的状态码都会触发该函数。
+      // 对响应数据做点什么
+      console.log('响应码：', response.status, "响应成功");
+      return response;
+    },
+    (error) => {
+      // 超出 2xx 范围的状态码都会触发该函数。
+      // 对响应错误做点什么
+      console.log(error);
+      
+      return Promise.reject(error);
+    }
+  );
+  
+  export default AxiosToken;
+  ```
 
-const router = createRouter({
-    history: createWebHashHistory(), //哈希值模式
-    routes
-})
+- 请求文件
 
-export default router
+  我这里新建了test文件夹来准备放登陆和主页的请求，可按自己习惯来
+
+  ```js
+  // api/test/login.ts
+  
+  import AxiosToken from "../index";
+  
+  const { request } = AxiosToken;
+  let remoteUrl = "";
+  
+  interface LoginAki {
+    /**手机 */
+    phone: string;
+    /**密码 */
+    password: string;
+  }
+  // 这里我是前面配置了自动引入pinia，要是报错记得检查一下
+  export const userAkiStore = defineStore("userAki", () => {
+    //网易云api登陆接口
+    async function userLogin(params: LoginAki) {
+      return await request({
+        url: remoteUrl + "/login/cellphone",
+        method: "get",
+        params: params,
+      });
+    }
+    return { userLogin };
+  });
+  ```
+
+  
+
+- 使用请求
+
+  ```vue
+  // login.vue
+  
+  <template>
+    <div v-if="userData">
+      <img :src="userData.avatarUrl" style="width: 100px;height: 100px;border-radius: 50%;" />
+      <h1 class="test">{{ userData.nickname }}</h1>
+      <div>{{ userData.signature }}</div>
+    </div>
+    <div>
+      <input v-model="loginForm.phone" />
+      <input v-model="loginForm.password" type="password" />
+    </div>
+  
+    <button @click="Login">登录</button>
+  </template>
+  
+  <script setup lang="ts">
+  import { userAkiStore } from "@/api/test/login";
+  const loginForm = reactive({
+    phone: "",
+    password: "",
+  });
+  
+  const StoreLing = userAkiStore();
+  const userData = ref()
+  
+  async function GetDateShang(data: LoginAki) {
+    return await StoreLing.userLogin(data)
+      .then((res) => {
+        userData.value = res.data.profile
+      })
+      .then((err) => {
+        return err;
+      });
+  }
+  function Login() {
+    GetDateShang(loginForm);
+  }
+  
+  interface LoginAki {
+    /**手机 */
+    phone: string;
+    /**密码 */
+    password: string;
+  }
+  </script>
+  ```
+
+
+
+## 配置组件库
+ Naive UI
+
+> 安装  pnpm add @douyinfe/semi-ui   [文档]([Naive UI: 一个 Vue 3 组件库](https://www.naiveui.com/zh-CN/light))
+
+- 配置按需引入 （使用前面配置过的unplugin-auto-import，还需要安装unplugin-vue-components）
+
+  > 安装 pnpm add unplugin-vue-components
+  
+  ```json
+  import Components from "unplugin-vue-components/vite";
+  import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
+  
+  plugins: [
+    ......
+      AutoImport({
+          imports: [
+              "vue",
+              "vue-router",
+              "pinia",
+              {
+                  "naive-ui": [
+                      "useDialog",
+                      "useMessage",
+                      "useNotification",
+                      "useLoadingBar",
+                  ],
+              },
+          ], // 自动导入vue、vue-router、pinia相关函数
+          dts: "src/auto-import.d.ts", // 生成 `auto-import.d.ts` 全局声明
+      }),
+      Components({
+        resolvers: [NaiveUiResolver()]
+      }),
+    ......
+  ]
+  ```
+
+
+
+>  配置到这应该就差不多了，下面可能会增加一些有用的东西
+
+<div class="text-center">
+  <img src="/image/bqb1.jpg" alt="portrait" >
+</div>
+
+------
+
+
+
+## 使用svg图标
+
+> 安装  pnpm add naive-ui -D  [掘金文章](https://juejin.cn/post/7094060278475653128)
+
+- 配置vite.config.ts
+
+```json
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
+import path from "path";
+
+plugins: [
+   ...
+     createSvgIconsPlugin({
+         // 指定需要缓存的图标文件夹
+         iconDirs: [path.resolve(process.cwd(), "src/assets/svg")],
+         // 指定symbolId格式
+         symbolId: "icon-[dir]-[name]",
+
+         /**
+       * 自定义插入位置
+       * @default: body-last
+       */
+         // inject?: 'body-last' | 'body-first'
+
+         /**
+       * custom dom id
+       * @default: __svg__icons__dom__
+       */
+         // customDomId: '__svg__icons__dom__',
+     }),
+   ...
+ ],
 ```
-> 修改入口文件main.ts
-```ts
-import { createApp } from "vue";
-import "./style.css";
-import App from "./App.vue";
-import router from "./router/index";
 
-const app = createApp(App);
+- 封装SvgIcon组件 
 
-app.use(router);
-app.mount("#app");
-
-```
-> 在app.vue中更改
 ```vue
+// src/components/SvgIcon
+
 <template>
-  <!-- 放置路由容器 -->
-  <router-view></router-view>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <div>
-    <router-link to="/">Go to Home</router-link>
-    <br/>
-    <router-link to="/about">Go to About</router-link>
-  </div>
+  <svg aria-hidden="true">
+    <use :href="symbolId" :fill="color" />
+  </svg>
 </template>
+
+<script lang="ts">
+import { defineComponent, computed } from 'vue'
+
+export default defineComponent({
+  name: 'SvgIcon',
+  props: {
+    prefix: {
+      type: String,
+      default: 'icon',
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    color: {
+      type: String,
+      default: '#333',
+    },
+  },
+  setup(props) {
+    const symbolId = computed(() => `#${props.prefix}-${props.name}`)
+    return { symbolId }
+  },
+})
+</script>
 ```
 
-## 统一请求封装
-### 安装axios
-```
-# 安装 axios
-pnpm add axios
-# 安装 nprogress 用于请求 loading
-# 也可以根据项目需求自定义其它 loading
-pnpm add nprogress
-# 类型声明，或者添加一个包含 `declare module 'nprogress'
-pnpm add @types/nprogress
-```
-### 编写目录文件
+- 配置main.ts
 
+```ts
+import "virtual:svg-icons-register";				// 新增
+import SvgIcon from "@/components/SvgIcon.vue";		// 新增
+
+app.component("svg-icon", SvgIcon);			// 新增
 ```
 
-```
+- 页面中使用
 
+  ```vue
+  <template>
+    <div>
+      <SvgIcon name="genshin" style="width: 50px; height: 50px" />
+    </div>
+  </template>
+  <script setup lang="ts">
+  import SvgIcon from "@/components/SvgIcon.vue"
+  </script>
+  ```
+
+  
