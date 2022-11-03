@@ -1,13 +1,11 @@
 ---
 title: Echarts配置项
-date: 2022-10-21
-updated: 2022-10-23
 tags:
   - 教程
 categories:
   - 教程
 # type: yuque
-# url: 
+# url:
 ---
 
 ## 部分配置项

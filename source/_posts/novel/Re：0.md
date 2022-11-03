@@ -1,13 +1,12 @@
 ---
 title: Re：0从零开始的异世界生活
-date: 2022-10-14 16:53:58
-updated: 2022-10-14 17:13:17
 tags:
   - ACGN
   - 小说
 categories:
   - ACGN
   - 小说
+hide: index
 ---
 
 > 小说地址

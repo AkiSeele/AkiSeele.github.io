@@ -1,7 +1,5 @@
 ---
 title: Vite项目搭建
-date: 2022-11-02
-updated: 2022-11-02
 tags:
   - 教程
 categories:
@@ -518,6 +516,7 @@ plugins: [
 
 
 >  配置到这应该就差不多了，下面可能会增加一些有用的东西,略过了eslint的配置
+> [仓库地址](https://github.com/AkiSeele/aki-viteTem)
 
 <div class="text-center">
   <img src="/image/bqb1.jpg" alt="portrait" >

@@ -1,13 +1,12 @@
 ---
 title: Hexo少前live2d使用指南
-date: 2022-10-08
-updated: 2022-10-09
 tags:
   - 教程
 categories:
   - 教程
 # type: yuque
 # url: 
+hide: index
 ---
 
 #### 安装hexo-helper-live2d
