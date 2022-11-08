@@ -49,6 +49,22 @@ console.log(arr.sort((a,b)=>{
 }))
 ```
 
+## pinia
+> 使用storeToRefs可以保证解构出来的数据也是响应式的
+```
+<script setup>
+import { storeToRefs } from 'pinia'
+import useCounterStore from './store/counter'
+
+const counter = useCounterStore()
+// 如果直接从pinia中解构数据，会丢失响应式
+const { count, double } = counter
+
+// 使用storeToRefs可以保证解构出来的数据也是响应式的
+const { count, double } = storeToRefs(counter)
+
+</script>
+```
 ## 获取openID
 
 ```js

@@ -4,6 +4,7 @@ tags:
   - 教程
 categories:
   - 教程
+data: 2022-11-03
 # type: yuque
 # url:
 ---
@@ -19,7 +20,7 @@ categories:
 ## 目录结构
 
 ```
-
+// 记得先把文件夹创建好哦,后面跟着步骤创建也可以
 ├── pubilc
 └── src
     ├── api                       // 接口请求
@@ -515,9 +516,6 @@ plugins: [
 
 
 
->  配置到这应该就差不多了，下面可能会增加一些有用的东西,略过了eslint的配置
-> [仓库地址](https://github.com/AkiSeele/aki-viteTem)
-
 <div class="text-center">
   <img src="/image/bqb1.jpg" alt="portrait" >
 </div>
@@ -609,3 +607,116 @@ app.component("svg-icon", SvgIcon);			// 新增
   ```
 
   
+## 配置xicons自动引入
+> 安装 pnpm add -D unplugin-icons [掘金文章](https://juejin.cn/post/7095460309673967646) [图标库](https://icones.js.org/)
+
+```json
+// 搭配前面unplugin-vue-components一起使用
+
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
+plugins: [
+ ......
+  Components({
+    resolvers: [
+      NaiveUiResolver(),
+      // 新增的
+      IconsResolver({   
+        prefix: 'icon', // 自动引入的Icon组件统一前缀，默认为 i，设置false为不需要前缀
+        // {prefix}-{collection}-{icon} 使用组件解析器时，您必须遵循名称转换才能正确推断图标。
+        // alias: { park: 'icon-park' } 集合的别名
+        enabledCollections: ['ep'] // 这是可选的，默认启用 Iconify 支持的所有集合['mdi']
+      }),
+    ],
+  }),
+  Icons({
+    // scale: 1, // 缩放
+    compiler: 'vue3', // 编译方式
+    // defaultClass: '', // 默认类名
+    // defaultStyle: '', // 默认样式
+    autoInstall: true
+    // jsx: 'react' // jsx支持
+  }),
+ ......
+]
+```
+
+- 使用
+  ```vue
+  去官网复制图标name
+  不需要下载图标库，系统会自动按需下载。
+  <IconEpFold class="v-icon" />
+  
+  .v-icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    font-size: 1em;
+  }
+  ```
+
+
+
+## 配置半自动化路由
+
+> 自己水平垃圾了，写完后也不太好整理。
+>
+> 我的仓库地址放这里，可以直接参考还方便一点 [仓库地址](https://github.com/AkiSeele/aki-viteTem)
+
+- 文件夹格式
+  - 路由文件夹
+  - ![路由](https://s1.ax1x.com/2022/11/04/xqjfe0.png)
+  - layout文件夹
+  - ![layout](https://s1.ax1x.com/2022/11/04/xqjjw6.png)
+
+
+
+- 效果图
+
+  - ![首页](https://s1.ax1x.com/2022/11/04/xqxP4U.png)
+  - ![案件上报](https://s1.ax1x.com/2022/11/04/xqxZuR.png)
+
+  
+
+- 主题颜色修改
+
+> 因为使用的是Naive UI 修改主题挺方便的，官方也有详细的教程  [官方文档](https://www.naiveui.com/zh-CN/os-theme/docs/customize-theme#调整主题变量)
+
+```vue
+//   App.vue
+
+<template>
+  <!-- 放置路由容器 -->
+  <div id="app">
+    <n-config-provider :theme-overrides="themeOverrides">
+      <RouterView />
+    </n-config-provider>
+  </div>
+  
+</template>
+
+<script setup lang="ts">
+import { NConfigProvider, GlobalThemeOverrides } from 'naive-ui'
+
+const themeOverrides: GlobalThemeOverrides = {
+  // 这里设置你想要的颜色就可以啦
+  // 具体可使用变量请参考 GlobalThemeOverrides 类型提示。
+  common: {
+    primaryColor: '#5593F9'
+  },
+  Button: {
+    textColor: '#5593F9'
+  }
+}
+</script>
+
+<style scoped>
+</style>
+```
+
+
+
+> 一些小问题
+>
+> Naive的菜单组件，为了方便自动实现，我就关了路由的类型校验RouteRecordRaw（谁来教教我ts啊）
+
