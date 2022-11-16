@@ -5,49 +5,100 @@ tags:
 categories:
   - 笔记
 ---
-## vuex
 
+## VUE3
+> defineProps   获取组件传值
+  ```
+
+  ```
+> defineEmits   子组件向父组件事件传递
+  - 子组件
+  ```
+    // 子组件中
+    const emit = defineEmits(['menuSelect'])
+
+    function routerLiveTO(data: any, index: number) {
+        emit('menuSelect', data.name)
+    }
+  ```
+
+  - 父组件
+  ```
+   <Breadcrumb  @menuSelect="menuSelect" />
+
+   function menuSelect(data: string) {
+     selectedKeyRef.value = data
+     menuInstRef.value?.showOption(data)
+   }
+  ```
+> defineExpose  组件暴露自己的属性
+
+## 扁平数组转树状结构
 ```js
-用watch监听state值的变化时可以用computed将state中的变量接收 方便模板中使用
-computed: {
-	timeTotal() {
-		return this.$store.state.timeDuration;
-	}
-},
+// 需处理数组
+let arr = ([
+  { id: 1, name: '部门1', pid: 0 },
+  { id: 2, name: '部门2', pid: 1 },
+  { id: 3, name: '部门3', pid: 1 },
+  { id: 4, name: '部门4', pid: 3 },
+  { id: 5, name: '部门5', pid: 4 },
+])
+
+// 函数
+function arrayToTree(items: any) {
+  // 存放结果集
+  const result:any = [];   
+  
+  // 先转成map整体存储
+  const itemMap:any = {};  
+  for (const item of items) {
+    itemMap[item.id] = { ...item, children: [] }
+  }
+
+  // 第二次循环
+  for (const item of items) {
+    // （重要）每次循环重新赋一遍值，下面判断以这些重新定义的值来做处理
+    
+    const id = item.id;     // 当前对象对应的id
+    const pid = item.pid;   // 当前对象对应的层级
+    const treeItem = itemMap[id];   // 当前对象(第一层的循环加上了children)
+
+    if (pid === 0) {
+      // 最顶级直接加入最终返回值里
+      result.push(treeItem);
+    } else {
+      if (!itemMap[pid]) {
+        itemMap[pid] = {
+          children: [],
+        }
+      }
+      // 这里的pid每次对应的层级会重新赋为当前的pid值
+      // 也就是将当前循环的对象放入对应的层级  children 里
+      // 比如循环到部门3时，当前pid为1， 指向itemMap[1] 也就是 部门1的 children 里，直接放入数组末尾
+      itemMap[pid].children.push(treeItem)
+    }
+  }
+  return result;
+}
 ```
 
-
-
-## 排序
-
-```js
-let arr = [
-    {
-        age:1,
-        name:'一'
-    },
-    {
-        age:3,
-        name:'三'
-    },
-    {
-        age:2,
-        name:'二'
-    },
-    {
-        age:5,
-        name:'五'
-    },
-    {
-        age:4,
-        name:'四'
-    },
-]
-
-console.log(arr.sort((a,b)=>{
-    return a.age-b.age//小到大
-}))
+## 根据对象属性去重
 ```
+function queChong(arr: any[]) {
+  const res = <any[]>[]
+  arr.forEach(item => {
+    if (typeof item === 'object' && item !== null) {
+      const tmp = res.filter(i => JSON.stringify(i.deptId) === JSON.stringify(item.deptId));
+      console.log(tmp);
+      if (tmp.length === 0) {
+        res.push(item)
+      }
+    }
+  })
+  return res;
+}
+```
+
 
 ## pinia
 > 使用storeToRefs可以保证解构出来的数据也是响应式的
@@ -65,6 +116,20 @@ const { count, double } = storeToRefs(counter)
 
 </script>
 ```
+
+
+## vuex
+
+```js
+用watch监听state值的变化时可以用computed将state中的变量接收 方便模板中使用
+computed: {
+	timeTotal() {
+		return this.$store.state.timeDuration;
+	}
+},
+```
+
+
 ## 获取openID
 
 ```js
@@ -139,4 +204,46 @@ const { count, double } = storeToRefs(counter)
         }
     });
 </script>
+```
+
+
+## addEventListener
+![addEventListener](https://s1.ax1x.com/2022/11/11/z9xVGd.png)
+```
+// 这个storage事件，可以多个同源页面，一个修改storage的值，其它的同源页面就会触发这个事件
+window.addEventListener("storage", function (e) {
+   console.log(e)
+   console.log(e.newValue)
+});
+```
+
+## 排序
+
+```js
+let arr = [
+    {
+        age:1,
+        name:'一'
+    },
+    {
+        age:3,
+        name:'三'
+    },
+    {
+        age:2,
+        name:'二'
+    },
+    {
+        age:5,
+        name:'五'
+    },
+    {
+        age:4,
+        name:'四'
+    },
+]
+
+console.log(arr.sort((a,b)=>{
+    return a.age-b.age//小到大
+}))
 ```
