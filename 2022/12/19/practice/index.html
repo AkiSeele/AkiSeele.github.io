@@ -1,0 +1,252 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="Aki Seele"><meta name="copyright" content="Aki Seele"><meta name="generator" content="Hexo 6.3.0"><meta name="theme" content="hexo-theme-yun"><title>练习补充笔记 | 舰舰的奇妙见闻</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/star-markdown-css@0.4.1/dist/yun/yun-markdown.min.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/prism-theme-vars/base.css"><script src="https://fastly.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>function initScrollReveal() {
+  [".post-card",".markdown-body img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+}
+document.addEventListener("DOMContentLoaded", initScrollReveal);
+document.addEventListener("pjax:success", initScrollReveal);
+</script><link rel="icon" type="image/png" href="/favicon.ico"><link rel="mask-icon" href="/favicon.ico" color="#0078E7"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preconnect" href="https://fastly.jsdelivr.net/npm/" crossorigin><script id="yun-config">
+    window.Yun = {}
+    window.CONFIG = {"hostname":"zsrbxs.xyz","root":"/","title":"舰舰的奇妙见闻","version":"1.10.9","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"搜索...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）"},"anonymous_image":"https://cdn.yunyoujun.cn/img/avatar/none.jpg","say":{"api":"/data/sentences.json"},"fireworks":{"colors":["155, 212, 252","234, 80, 144","92, 160, 225"]},"waline":{"config":{"enable":true,"serverURL":"https://example.akibro.top","comment":false,"el":"#waline","lang":"zh-CN"},"cdn":"https://fastly.jsdelivr.net/npm/@waline/client@v2/dist/waline.js","dark":"html.dark"},"vendors":{"host":"https://fastly.jsdelivr.net/npm/","darken":"https://fastly.jsdelivr.net/npm/darken@1.5.0"}};
+  </script><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script src="/js/hexo-theme-yun.js" type="module"></script><meta name="description" content="VUE3 defineProps   获取组件传值  defineEmits   子组件向父组件事件传递   子组件   &#x2F;&#x2F; 子组件中 const emit &#x3D; defineEmits([&#39;menuSelect&#39;])  function routerLiveTO(data: any, index: number) &amp;#123;     emit(&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="练习补充笔记">
+<meta property="og:url" content="http://zsrbxs.xyz/2022/12/19/practice/index.html">
+<meta property="og:site_name" content="舰舰的奇妙见闻">
+<meta property="og:description" content="VUE3 defineProps   获取组件传值  defineEmits   子组件向父组件事件传递   子组件   &#x2F;&#x2F; 子组件中 const emit &#x3D; defineEmits([&#39;menuSelect&#39;])  function routerLiveTO(data: any, index: number) &amp;#123;     emit(&amp;#">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/11/z9xVGd.png">
+<meta property="article:published_time" content="2022-12-19T06:40:06.426Z">
+<meta property="article:modified_time" content="2022-12-19T06:40:06.427Z">
+<meta property="article:author" content="Aki Seele">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/11/11/z9xVGd.png"><script>(function() {
+  if (CONFIG.mode !== 'auto') return
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const setting = localStorage.getItem('darken-mode') || 'auto'
+  if (setting === 'dark' || (prefersDark && setting !== 'light'))
+    document.documentElement.classList.toggle('dark', true)
+})()</script></head><body><script src="https://code.iconify.design/2/2.1.1/iconify.min.js"></script><script>// Define global variable
+IconifyProviders = {
+  // Empty prefix: overwrite default API provider configuration
+  '': {
+    // Use custom API first, use Iconify public API as backup
+    resources: [
+        'https://api.iconify.design',
+    ],
+    // Wait for 1 second before switching API hosts
+    rotate: 1000,
+  },
+};</script><script defer src="https://fastly.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><span class="icon iconify" data-icon="ri:list-ordered"></span></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><span class="icon iconify" data-icon="ri:passport-line"></span></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="Aki Seele"><img width="96" loading="lazy" src="/image/tou.jpg" alt="Aki Seele"><span class="site-author-status" title="不想上班">😭</span></a><div class="site-author-name"><a href="/about/">Aki Seele</a></div><span class="site-name">舰舰的奇妙见闻</span><sub class="site-subtitle"></sub><div class="site-description">希望自己从始至终不会变化</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:home-4-line"></span></span></a><div class="site-state-item"><a href="/archives/" title="文档"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:archive-line"></span></span><span class="site-state-item-count">12</span></a></div><div class="site-state-item"><a href="/categories/" title="记录"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:folder-2-line"></span></span><span class="site-state-item-count">7</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="site-state-item-count">8</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn/guide/" title="设置"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:settings-line"></span></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/AkiSeele" title="GitHub" target="_blank" style="color:#181717"><span class="icon iconify" data-icon="ri:github-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/12087145" title="哔哩哔哩动画" target="_blank" style="color:#FF8EB3"><span class="icon iconify" data-icon="ri:bilibili-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:a2371445972@outlook.com" title="E-Mail" target="_blank" style="color:#8E71C1"><span class="icon iconify" data-icon="ri:mail-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/u/6162682416" title="微博" target="_blank" style="color:#E6162D"><span class="icon iconify" data-icon="ri:weibo-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=333109340" title="网易云音乐" target="_blank" style="color:#C10D0C"><span class="icon iconify" data-icon="ri:netease-cloud-music-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.zhihu.com/people/zong-shi-ri-bo-xi-shan" title="知乎" target="_blank" style="color:#0084FF"><span class="icon iconify" data-icon="ri:zhihu-line"></span></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/girls/" title="小可爱们" style="color:dodgerblue"><span class="icon iconify" data-icon="fluent:animal-cat-28-filled"></span></a><a class="links-item hty-icon-button" href="/albums/" title="留影册" style="color:dodgerblue"><span class="icon iconify" data-icon="material-symbols:all-inbox-sharp"></span></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><span class="icon iconify" data-icon="ri:contrast-2-line"></span></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#VUE3"><span class="toc-number">1.</span> <span class="toc-text">VUE3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%81%E5%B9%B3%E6%95%B0%E7%BB%84%E8%BD%AC%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">扁平数组转树状结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E5%8E%BB%E9%87%8D"><span class="toc-number">3.</span> <span class="toc-text">根据对象属性去重</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pinia"><span class="toc-number">4.</span> <span class="toc-text">pinia</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vuex"><span class="toc-number">5.</span> <span class="toc-text">vuex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96openID"><span class="toc-number">6.</span> <span class="toc-text">获取openID</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%AE%A2%E9%98%85%E6%B6%88%E6%81%AF"><span class="toc-number">7.</span> <span class="toc-text">发送小程序订阅消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#addEventListener"><span class="toc-number">8.</span> <span class="toc-text">addEventListener</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">9.</span> <span class="toc-text">排序</span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#0078E7;"><link itemprop="mainEntityOfPage" href="http://zsrbxs.xyz/2022/12/19/practice/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="Aki Seele"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="舰舰的奇妙见闻"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">练习补充笔记<a class="post-edit-link" href="https://github.com/AkiSeele/AkiSeele.github.io/tree/hexo/source/_posts/practice.md" target="_blank" title="编辑" rel="noopener"><span class="icon iconify" data-icon="ri:edit-line"></span></a></h1><div class="post-meta"><div class="post-time"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-line"></span></span> <time title="创建时间：2022-12-19 14:40:06" itemprop="dateCreated datePublished" datetime="2022-12-19T14:40:06+08:00">2022-12-19</time></div><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><span class="icon iconify" data-icon="ri:folder-line"></span></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/categories/%E7%AC%94%E8%AE%B0/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">笔记</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag-item" href="/tags/%E7%AC%94%E8%AE%B0/" style="--text-color:dimgray"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">笔记</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><h2 id="VUE3"><a href="#VUE3" class="headerlink" title="VUE3"></a>VUE3</h2><blockquote>
+<p>defineProps   获取组件传值<br>  <pre class="language-none"><code class="language-none"></code></pre><br>defineEmits   子组件向父组件事件传递</p>
+</blockquote>
+<ul>
+<li><p>子组件</p>
+  <pre class="language-none"><code class="language-none">&#x2F;&#x2F; 子组件中
+const emit &#x3D; defineEmits([&#39;menuSelect&#39;])
+
+function routerLiveTO(data: any, index: number) &#123;
+    emit(&#39;menuSelect&#39;, data.name)
+&#125;</code></pre>
+</li>
+<li><p>父组件</p>
+  <pre class="language-none"><code class="language-none">&lt;Breadcrumb  @menuSelect&#x3D;&quot;menuSelect&quot; &#x2F;&gt;
+
+function menuSelect(data: string) &#123;
+  selectedKeyRef.value &#x3D; data
+  menuInstRef.value?.showOption(data)
+&#125;</code></pre>
+<blockquote>
+<p>defineExpose  组件暴露自己的属性</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="扁平数组转树状结构"><a href="#扁平数组转树状结构" class="headerlink" title="扁平数组转树状结构"></a>扁平数组转树状结构</h2><pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 需处理数组</span>
+<span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token punctuation">&#123;</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'部门1'</span><span class="token punctuation">,</span> <span class="token literal-property property">pid</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#123;</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'部门2'</span><span class="token punctuation">,</span> <span class="token literal-property property">pid</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#123;</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'部门3'</span><span class="token punctuation">,</span> <span class="token literal-property property">pid</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#123;</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'部门4'</span><span class="token punctuation">,</span> <span class="token literal-property property">pid</span><span class="token operator">:</span> <span class="token number">3</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#123;</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'部门5'</span><span class="token punctuation">,</span> <span class="token literal-property property">pid</span><span class="token operator">:</span> <span class="token number">4</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 函数</span>
+<span class="token keyword">function</span> <span class="token function">arrayToTree</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">items</span><span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">// 存放结果集</span>
+  <span class="token keyword">const</span> <span class="token literal-property property">result</span><span class="token operator">:</span>any <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>   
+  
+  <span class="token comment">// 先转成map整体存储</span>
+  <span class="token keyword">const</span> <span class="token literal-property property">itemMap</span><span class="token operator">:</span>any <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>  
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> item <span class="token keyword">of</span> items<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    itemMap<span class="token punctuation">[</span>item<span class="token punctuation">.</span>id<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token operator">...</span>item<span class="token punctuation">,</span> <span class="token literal-property property">children</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token comment">// 第二次循环</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> item <span class="token keyword">of</span> items<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// （重要）每次循环重新赋一遍值，下面判断以这些重新定义的值来做处理</span>
+    
+    <span class="token keyword">const</span> id <span class="token operator">=</span> item<span class="token punctuation">.</span>id<span class="token punctuation">;</span>     <span class="token comment">// 当前对象对应的id</span>
+    <span class="token keyword">const</span> pid <span class="token operator">=</span> item<span class="token punctuation">.</span>pid<span class="token punctuation">;</span>   <span class="token comment">// 当前对象对应的层级</span>
+    <span class="token keyword">const</span> treeItem <span class="token operator">=</span> itemMap<span class="token punctuation">[</span>id<span class="token punctuation">]</span><span class="token punctuation">;</span>   <span class="token comment">// 当前对象(第一层的循环加上了children)</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>pid <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token comment">// 最顶级直接加入最终返回值里</span>
+      result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>treeItem<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>itemMap<span class="token punctuation">[</span>pid<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        itemMap<span class="token punctuation">[</span>pid<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+          <span class="token literal-property property">children</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">&#125;</span>
+      <span class="token comment">// 这里的pid每次对应的层级会重新赋为当前的pid值</span>
+      <span class="token comment">// 也就是将当前循环的对象放入对应的层级  children 里</span>
+      <span class="token comment">// 比如循环到部门3时，当前pid为1， 指向itemMap[1] 也就是 部门1的 children 里，直接放入数组末尾</span>
+      itemMap<span class="token punctuation">[</span>pid<span class="token punctuation">]</span><span class="token punctuation">.</span>children<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>treeItem<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
+
+<h2 id="根据对象属性去重"><a href="#根据对象属性去重" class="headerlink" title="根据对象属性去重"></a>根据对象属性去重</h2><pre class="language-none"><code class="language-none">function queChong(arr: any[]) &#123;
+  const res &#x3D; &lt;any[]&gt;[]
+  arr.forEach(item &#x3D;&gt; &#123;
+    if (typeof item &#x3D;&#x3D;&#x3D; &#39;object&#39; &amp;&amp; item !&#x3D;&#x3D; null) &#123;
+      const tmp &#x3D; res.filter(i &#x3D;&gt; JSON.stringify(i.deptId) &#x3D;&#x3D;&#x3D; JSON.stringify(item.deptId));
+      console.log(tmp);
+      if (tmp.length &#x3D;&#x3D;&#x3D; 0) &#123;
+        res.push(item)
+      &#125;
+    &#125;
+  &#125;)
+  return res;
+&#125;</code></pre>
+
+
+<h2 id="pinia"><a href="#pinia" class="headerlink" title="pinia"></a>pinia</h2><blockquote>
+<p>使用storeToRefs可以保证解构出来的数据也是响应式的</p>
+</blockquote>
+<pre class="language-none"><code class="language-none">&lt;script setup&gt;
+import &#123; storeToRefs &#125; from &#39;pinia&#39;
+import useCounterStore from &#39;.&#x2F;store&#x2F;counter&#39;
+
+const counter &#x3D; useCounterStore()
+&#x2F;&#x2F; 如果直接从pinia中解构数据，会丢失响应式
+const &#123; count, double &#125; &#x3D; counter
+
+&#x2F;&#x2F; 使用storeToRefs可以保证解构出来的数据也是响应式的
+const &#123; count, double &#125; &#x3D; storeToRefs(counter)
+
+&lt;&#x2F;script&gt;</code></pre>
+
+
+<h2 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h2><pre class="language-javascript" data-language="javascript"><code class="language-javascript">用watch监听state值的变化时可以用computed将state中的变量接收 方便模板中使用
+<span class="token literal-property property">computed</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+	<span class="token function">timeTotal</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>timeDuration<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span></code></pre>
+
+
+<h2 id="获取openID"><a href="#获取openID" class="headerlink" title="获取openID"></a>获取openID</h2><pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script<span class="token operator">></span>
+    uni<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+        <span class="token function-variable function">success</span><span class="token operator">:</span> <span class="token parameter">res</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">//code值(5分钟失效)</span>
+            console<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>code<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">//小程序appid</span>
+            <span class="token keyword">let</span> appid <span class="token operator">=</span> <span class="token string">'wx3599fe368a452c9'</span><span class="token punctuation">;</span> 
+            <span class="token comment">//小程序secret</span>
+            <span class="token keyword">let</span> secret <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span> 
+            <span class="token comment">//wx接口路径</span>
+            <span class="token keyword">let</span> url <span class="token operator">=</span> <span class="token string">'https://api.weixin.qq.com/sns/jscode2session?appid='</span> <span class="token operator">+</span> appid <span class="token operator">+</span> <span class="token string">'&amp;secret='</span> <span class="token operator">+</span> secret <span class="token operator">+</span> <span class="token string">'&amp;js_code='</span> <span class="token operator">+</span> res<span class="token punctuation">.</span>code <span class="token operator">+</span> <span class="token string">'&amp;grant_type=authorization_code'</span><span class="token punctuation">;</span>
+            uni<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+                <span class="token literal-property property">url</span><span class="token operator">:</span> url<span class="token punctuation">,</span> <span class="token comment">// 请求路径</span>
+                <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token comment">//请求方式</span>
+                <span class="token function-variable function">success</span><span class="token operator">:</span> <span class="token parameter">result</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+                    <span class="token comment">//响应成功</span>
+                    <span class="token comment">//这里就获取到了openid了</span>
+                    console<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>data<span class="token punctuation">.</span>openid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    uni<span class="token punctuation">.</span><span class="token function">setStorage</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+                        <span class="token literal-property property">key</span><span class="token operator">:</span><span class="token string">'user'</span><span class="token punctuation">,</span>
+                        <span class="token literal-property property">data</span><span class="token operator">:</span> result<span class="token punctuation">.</span>data<span class="token punctuation">.</span>openid
+                    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+                <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+                <span class="token function-variable function">fail</span><span class="token operator">:</span> <span class="token parameter">err</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> <span class="token comment">//失败</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+
+
+
+<h2 id="发送小程序订阅消息"><a href="#发送小程序订阅消息" class="headerlink" title="发送小程序订阅消息"></a>发送小程序订阅消息</h2><pre class="language-vue" data-language="vue"><code class="language-vue">&lt;script&gt;
+    var test &#x3D; &#123;
+        touser: ac_user,	&#x2F;&#x2F; openID
+        template_id: template_id,	&#x2F;&#x2F; 订阅模板ID
+        &#x2F;&#x2F; 模板内容
+        data: &#123;
+            thing13: &#123; value: &#39;张三&#39; &#125;,
+            number16: &#123; value: &#39;5&#39; &#125;
+        &#125;
+    &#125;;
+
+    uni.request(&#123;
+        method: &#39;get&#39;,
+        &#x2F;&#x2F; 获取access_token
+        url: &#96;https:&#x2F;&#x2F;api.weixin.qq.com&#x2F;cgi-bin&#x2F;token?grant_type&#x3D;client_credential&amp;appid&#x3D;$&#123;appid&#125;&amp;secret&#x3D;$&#123;secret&#125;&#96;,
+        dataType: &#39;json&#39;,
+        timeout: 30000
+    &#125;).then(res &#x3D;&gt; &#123;
+        let [err, success] &#x3D; res;
+        if (success.statusCode &#x3D;&#x3D; 200) &#123;
+            wx.request(&#123;
+                &#x2F;&#x2F; 发送模板消息
+                url: &#39;https:&#x2F;&#x2F;api.weixin.qq.com&#x2F;cgi-bin&#x2F;message&#x2F;subscribe&#x2F;send?access_token&#x3D;&#39; + success.data.access_token,
+                method: &#39;post&#39;,
+                data: JSON.stringify(test),
+                success: function(res) &#123;
+                    console.log(&#39;订阅成功&#39;);
+                    console.log(res);
+                &#125;,
+                fail: function(res) &#123;
+                    console.log(&#39;订阅失败&#39;);
+                &#125;
+            &#125;);
+        &#125;
+    &#125;);
+&lt;&#x2F;script&gt;</code></pre>
+
+
+<h2 id="addEventListener"><a href="#addEventListener" class="headerlink" title="addEventListener"></a>addEventListener</h2><p><img src="https://s1.ax1x.com/2022/11/11/z9xVGd.png" alt="addEventListener" loading="lazy"></p>
+<pre class="language-none"><code class="language-none">&#x2F;&#x2F; 这个storage事件，可以多个同源页面，一个修改storage的值，其它的同源页面就会触发这个事件
+window.addEventListener(&quot;storage&quot;, function (e) &#123;
+   console.log(e)
+   console.log(e.newValue)
+&#125;);</code></pre>
+
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token literal-property property">age</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">name</span><span class="token operator">:</span><span class="token string">'一'</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token literal-property property">age</span><span class="token operator">:</span><span class="token number">3</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">name</span><span class="token operator">:</span><span class="token string">'三'</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token literal-property property">age</span><span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">name</span><span class="token operator">:</span><span class="token string">'二'</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token literal-property property">age</span><span class="token operator">:</span><span class="token number">5</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">name</span><span class="token operator">:</span><span class="token string">'五'</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token literal-property property">age</span><span class="token operator">:</span><span class="token number">4</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">name</span><span class="token operator">:</span><span class="token string">'四'</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span>b</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">.</span>age<span class="token operator">-</span>b<span class="token punctuation">.</span>age<span class="token comment">//小到大</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div></section></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/2022/12/19/uniapp/" rel="prev" title="uniapp笔记"><span class="icon iconify" data-icon="ri:arrow-left-s-line"></span><span class="post-nav-text">uniapp笔记</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/2022/12/19/course/vite/" rel="next" title="Vite项目搭建"><span class="post-nav-text">Vite项目搭建</span><span class="icon iconify" data-icon="ri:arrow-right-s-line"></span></a></div></div></div><div class="hty-card" id="comment"><div id="waline"></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@waline/client@v2/dist/waline.css"><script>window.CONFIG.waline.config.path = "/2022/12/19/practice/"</script><div class="js-Pjax"><script src="/js/comments/waline.js" type="module" defer></script></div></div></main><footer class="sidebar-translate" id="footer"><div class="beian"><a rel="noopener" href="https://beian.miit.gov.cn/" target="_blank">鄂ICP备2022016601号-1</a></div><div class="copyright"><span>&copy; 2019 – 2022 </span><a class="with-love" id="animate" target="_blank" rel="noopener" href="https://github.com/AkiSeele" title="可爱滴捏"><span class="icon iconify" data-icon="ri:cloud-line"></span></a><span class="author"> Aki Seele</span></div><a class="flex-center" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030902003626"><img src="data:image/png;base64, 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">&nbsp;<span>粤公网安备 44030902003626号</span></a><div class="footer-support"><span>本网站由</span><a class="footer-support-logo" href="https://www.upyun.com/?utm_source=lianmeng&amp;utm_medium=referral" target="blank" title="又拍云"><img height="30" src="https://s1.ax1x.com/2022/10/18/xrUBHx.png" alt="又拍云"></a><span>提供 CDN 加速</span></div></footer></div><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><span class="icon iconify" data-icon="ri:arrow-up-s-line"></span><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/hk416.model.json"},"display":{"position":"left","width":250,"height":400},"mobile":{"show":false},"react":{"opacity":2},"log":false});</script></body></html>

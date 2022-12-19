@@ -1,0 +1,685 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="Aki Seele"><meta name="copyright" content="Aki Seele"><meta name="generator" content="Hexo 6.3.0"><meta name="theme" content="hexo-theme-yun"><title>Vite项目搭建 | 舰舰的奇妙见闻</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/star-markdown-css@0.4.1/dist/yun/yun-markdown.min.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/prism-theme-vars/base.css"><script src="https://fastly.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>function initScrollReveal() {
+  [".post-card",".markdown-body img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+}
+document.addEventListener("DOMContentLoaded", initScrollReveal);
+document.addEventListener("pjax:success", initScrollReveal);
+</script><link rel="icon" type="image/png" href="/favicon.ico"><link rel="mask-icon" href="/favicon.ico" color="#0078E7"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preconnect" href="https://fastly.jsdelivr.net/npm/" crossorigin><script id="yun-config">
+    window.Yun = {}
+    window.CONFIG = {"hostname":"zsrbxs.xyz","root":"/","title":"舰舰的奇妙见闻","version":"1.10.9","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"搜索...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）"},"anonymous_image":"https://cdn.yunyoujun.cn/img/avatar/none.jpg","say":{"api":"/data/sentences.json"},"fireworks":{"colors":["155, 212, 252","234, 80, 144","92, 160, 225"]},"waline":{"config":{"enable":true,"serverURL":"https://example.akibro.top","comment":false,"el":"#waline","lang":"zh-CN"},"cdn":"https://fastly.jsdelivr.net/npm/@waline/client@v2/dist/waline.js","dark":"html.dark"},"vendors":{"host":"https://fastly.jsdelivr.net/npm/","darken":"https://fastly.jsdelivr.net/npm/darken@1.5.0"}};
+  </script><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script src="/js/hexo-theme-yun.js" type="module"></script><meta name="description" content="创建脚手架建议使用 pnpm 搭建项目雏形  pnpm create vite  目录结构&#x2F;&#x2F; 记得先把文件夹创建好哦,后面跟着步骤创建也可以 ├── pubilc └── src     ├── api                       &#x2F;&#x2F; 接口请求     ├── assets                    &#x2F;&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vite项目搭建">
+<meta property="og:url" content="http://zsrbxs.xyz/2022/12/19/course/vite/index.html">
+<meta property="og:site_name" content="舰舰的奇妙见闻">
+<meta property="og:description" content="创建脚手架建议使用 pnpm 搭建项目雏形  pnpm create vite  目录结构&#x2F;&#x2F; 记得先把文件夹创建好哦,后面跟着步骤创建也可以 ├── pubilc └── src     ├── api                       &#x2F;&#x2F; 接口请求     ├── assets                    &#x2F;&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zsrbxs.xyz/image/bqb1.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/04/xqjfe0.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/04/xqjjw6.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/04/xqxP4U.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/04/xqxZuR.png">
+<meta property="article:published_time" content="2022-12-19T06:40:06.424Z">
+<meta property="article:modified_time" content="2022-12-19T06:40:06.424Z">
+<meta property="article:author" content="Aki Seele">
+<meta property="article:tag" content="教程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zsrbxs.xyz/image/bqb1.jpg"><script>(function() {
+  if (CONFIG.mode !== 'auto') return
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const setting = localStorage.getItem('darken-mode') || 'auto'
+  if (setting === 'dark' || (prefersDark && setting !== 'light'))
+    document.documentElement.classList.toggle('dark', true)
+})()</script></head><body><script src="https://code.iconify.design/2/2.1.1/iconify.min.js"></script><script>// Define global variable
+IconifyProviders = {
+  // Empty prefix: overwrite default API provider configuration
+  '': {
+    // Use custom API first, use Iconify public API as backup
+    resources: [
+        'https://api.iconify.design',
+    ],
+    // Wait for 1 second before switching API hosts
+    rotate: 1000,
+  },
+};</script><script defer src="https://fastly.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><span class="icon iconify" data-icon="ri:list-ordered"></span></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><span class="icon iconify" data-icon="ri:passport-line"></span></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="Aki Seele"><img width="96" loading="lazy" src="/image/tou.jpg" alt="Aki Seele"><span class="site-author-status" title="不想上班">😭</span></a><div class="site-author-name"><a href="/about/">Aki Seele</a></div><span class="site-name">舰舰的奇妙见闻</span><sub class="site-subtitle"></sub><div class="site-description">希望自己从始至终不会变化</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:home-4-line"></span></span></a><div class="site-state-item"><a href="/archives/" title="文档"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:archive-line"></span></span><span class="site-state-item-count">12</span></a></div><div class="site-state-item"><a href="/categories/" title="记录"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:folder-2-line"></span></span><span class="site-state-item-count">7</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="site-state-item-count">8</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn/guide/" title="设置"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:settings-line"></span></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/AkiSeele" title="GitHub" target="_blank" style="color:#181717"><span class="icon iconify" data-icon="ri:github-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/12087145" title="哔哩哔哩动画" target="_blank" style="color:#FF8EB3"><span class="icon iconify" data-icon="ri:bilibili-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:a2371445972@outlook.com" title="E-Mail" target="_blank" style="color:#8E71C1"><span class="icon iconify" data-icon="ri:mail-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/u/6162682416" title="微博" target="_blank" style="color:#E6162D"><span class="icon iconify" data-icon="ri:weibo-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=333109340" title="网易云音乐" target="_blank" style="color:#C10D0C"><span class="icon iconify" data-icon="ri:netease-cloud-music-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.zhihu.com/people/zong-shi-ri-bo-xi-shan" title="知乎" target="_blank" style="color:#0084FF"><span class="icon iconify" data-icon="ri:zhihu-line"></span></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/girls/" title="小可爱们" style="color:dodgerblue"><span class="icon iconify" data-icon="fluent:animal-cat-28-filled"></span></a><a class="links-item hty-icon-button" href="/albums/" title="留影册" style="color:dodgerblue"><span class="icon iconify" data-icon="material-symbols:all-inbox-sharp"></span></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><span class="icon iconify" data-icon="ri:contrast-2-line"></span></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%84%9A%E6%89%8B%E6%9E%B6"><span class="toc-number">1.</span> <span class="toc-text">创建脚手架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-%E8%B7%AF%E5%BE%84"><span class="toc-number">3.</span> <span class="toc-text">配置@路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">配置服务器和代理配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-router"><span class="toc-number">5.</span> <span class="toc-text">配置 router</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-pinia-%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">配置 pinia 状态管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-scss-%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8"><span class="toc-number">7.</span> <span class="toc-text">配置 scss 预处理器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%87%AA%E5%8A%A8%E5%BC%95%E5%85%A5%E6%8F%92%E4%BB%B6"><span class="toc-number">8.</span> <span class="toc-text">配置自动引入插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEaxios%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="toc-number">9.</span> <span class="toc-text">配置axios拦截器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%BB%84%E4%BB%B6%E5%BA%93"><span class="toc-number">10.</span> <span class="toc-text">配置组件库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8svg%E5%9B%BE%E6%A0%87"><span class="toc-number">11.</span> <span class="toc-text">使用svg图标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AExicons%E8%87%AA%E5%8A%A8%E5%BC%95%E5%85%A5"><span class="toc-number">12.</span> <span class="toc-text">配置xicons自动引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%8D%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%B7%AF%E7%94%B1"><span class="toc-number">13.</span> <span class="toc-text">配置半自动化路由</span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#0078E7;"><link itemprop="mainEntityOfPage" href="http://zsrbxs.xyz/2022/12/19/course/vite/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="Aki Seele"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="舰舰的奇妙见闻"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">Vite项目搭建<a class="post-edit-link" href="https://github.com/AkiSeele/AkiSeele.github.io/tree/hexo/source/_posts/course/vite.md" target="_blank" title="编辑" rel="noopener"><span class="icon iconify" data-icon="ri:edit-line"></span></a></h1><div class="post-meta"><div class="post-time"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-line"></span></span> <time title="创建时间：2022-12-19 14:40:06" itemprop="dateCreated datePublished" datetime="2022-12-19T14:40:06+08:00">2022-12-19</time></div><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><span class="icon iconify" data-icon="ri:folder-line"></span></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/categories/%E6%95%99%E7%A8%8B/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">教程</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag-item" href="/tags/%E6%95%99%E7%A8%8B/" style="--text-color:royalblue"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">教程</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><h2 id="创建脚手架"><a href="#创建脚手架" class="headerlink" title="创建脚手架"></a>创建脚手架</h2><p>建议使用 pnpm 搭建项目雏形</p>
+<blockquote>
+<p>pnpm create vite</p>
+</blockquote>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><pre class="language-none"><code class="language-none">&#x2F;&#x2F; 记得先把文件夹创建好哦,后面跟着步骤创建也可以
+├── pubilc
+└── src
+    ├── api                       &#x2F;&#x2F; 接口请求
+    ├── assets                    &#x2F;&#x2F; 静态资源
+    ├── common                    &#x2F;&#x2F; 通用类库
+    ├── components                &#x2F;&#x2F; 公共组件
+    ├── router                    &#x2F;&#x2F; 路由配置
+    ├── store                     &#x2F;&#x2F; 状态管理
+    ├── style                     &#x2F;&#x2F; 通用样式
+    ├── utils                     &#x2F;&#x2F; 工具函数
+    ├── views                     &#x2F;&#x2F; 页面组件
+    ├── App.vue
+    ├── main.ts
+    ├── style.css
+├── index.html
+├── package.json
+├── README.md
+├── tsconfig.json                 &#x2F;&#x2F; TypeScript 配置文件
+└── vite.config.ts                &#x2F;&#x2F; Vite 配置文件</code></pre>
+
+
+
+<h2 id="配置-路径"><a href="#配置-路径" class="headerlink" title="配置@路径"></a>配置@路径</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7006213924588617735">掘金文章</a></p>
+</blockquote>
+<ul>
+<li>ts 环境无法正确识别 node 相关的包的类型声明，需要先配置 node 的 types 依赖<blockquote>
+<p>pnpm add @types&#x2F;node -D</p>
+</blockquote>
+</li>
+<li>tsconfig.json 配置</li>
+</ul>
+<pre class="language-json" data-language="json"><code class="language-json">resolve<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    alias<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        <span class="token property">"@"</span><span class="token operator">:</span> resolve(__dirname<span class="token punctuation">,</span> 'src')<span class="token punctuation">,</span> <span class="token comment">// 路径别名</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    extensions<span class="token operator">:</span> <span class="token punctuation">[</span>'.js'<span class="token punctuation">,</span> '.json'<span class="token punctuation">,</span> '.ts'<span class="token punctuation">]</span> <span class="token comment">// 使用路径别名时想要省略的后缀名，可以自己 增减</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span></code></pre>
+
+
+
+<blockquote>
+<p>别名一般都是配置的文件目录，所以 key 和 value 都需要加上后缀 &#x2F;*</p>
+</blockquote>
+<ul>
+<li>vite.config.ts 配置</li>
+</ul>
+<pre class="language-json" data-language="json"><code class="language-json"><span class="token property">"compilerOptions"</span> <span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// ...</span>
+    <span class="token property">"baseUrl"</span><span class="token operator">:</span> <span class="token string">"."</span><span class="token punctuation">,</span> <span class="token comment">// 用于设置解析非相对模块名称的基本目录，相对模块不会受到baseUrl的影响</span>
+    <span class="token property">"paths"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 用于设置模块名到基于baseUrl的路径映射</span>
+        <span class="token property">"@/*"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"src/*"</span><span class="token punctuation">]</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// ...</span>
+<span class="token punctuation">&#125;</span></code></pre>
+
+
+<h2 id="配置服务器和代理配置"><a href="#配置服务器和代理配置" class="headerlink" title="配置服务器和代理配置"></a>配置服务器和代理配置</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://cn.vitejs.dev/config/server-options.html">官方文档</a></p>
+</blockquote>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token literal-property property">server</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">// 指定服务器应该监听哪个 IP 地址。 如果将此设置为 0.0.0.0 或者 true 将监听所有地址，包括局域网和公网地址。</span>
+  <span class="token comment">// 默认为 'localhost'，即仅能本机访问</span>
+  <span class="token literal-property property">host</span><span class="token operator">:</span> <span class="token string">"0.0.0.0"</span><span class="token punctuation">,</span>
+  <span class="token comment">// 启动端口</span>
+  <span class="token literal-property property">port</span><span class="token operator">:</span> <span class="token number">3422</span><span class="token punctuation">,</span>
+  <span class="token comment">// 设为 true 时若端口已被占用则会直接退出，而不是尝试下一个可用端口。</span>
+  <span class="token literal-property property">strictPort</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token comment">// HMR 连接配置（用于 HMR websocket 必须使用不同的 http 服务器地址的情况，或者禁用 hmr 模块），一般省略</span>
+  <span class="token literal-property property">hmr</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">host</span><span class="token operator">:</span> <span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">port</span><span class="token operator">:</span> <span class="token number">8080</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token comment">// 配置启动时是否自动打开网页，是字符串时表示打开某个特定路径</span>
+  <span class="token literal-property property">open</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token comment">// 自定义代理规则，用来配合后端服务进行接口调用等。</span>
+  <span class="token comment">// 默认使用 [http-proxy](https://github.com/http-party/node-http-proxy) 模块，完整配置见官方仓库</span>
+  <span class="token literal-property property">proxy</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token string-property property">"/api"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+       <span class="token comment">// 这是本地网易云api服务开启的地址,方便后续使用网易云api</span>
+       <span class="token comment">// 怎么使用网易云api这里略过,可自己根据文档开启https://github.com/w4ctech/NeteaseCloudMusicApi</span>
+       <span class="token literal-property property">target</span><span class="token operator">:</span> <span class="token string">"http://localhost:3000"</span><span class="token punctuation">,</span>
+       <span class="token literal-property property">changeOrigin</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+       <span class="token function-variable function">rewrite</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">path</span><span class="token punctuation">)</span> <span class="token operator">=></span> path<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^\/api</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+     <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span></code></pre>
+
+<ul>
+<li>eslint 、 prettier<blockquote>
+<p>目前跳过此部分</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="配置-router"><a href="#配置-router" class="headerlink" title="配置 router"></a>配置 router</h2><blockquote>
+<p>安装 pnpm add vue-router    <a target="_blank" rel="noopener" href="https://router.vuejs.org/zh/guide/">官方文档</a></p>
+</blockquote>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 创建 src/router/index.ts 文件</span>
+<span class="token comment">// 没有的文件自己按照目录创建</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> createRouter<span class="token punctuation">,</span> createWebHistory<span class="token punctuation">,</span> RouteRecordRaw <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"vue-router"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token literal-property property">routes</span><span class="token operator">:</span> Array<span class="token operator">&lt;</span>RouteRecordRaw<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/login"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Login"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">meta</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+      <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"登录"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">keepAlive</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">requireAuth</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">component</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">"@/views/login/login.vue"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Index"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">meta</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+      <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"首页"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">keepAlive</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">requireAuth</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">component</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">"@/views/index.vue"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">createRouter</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+  <span class="token literal-property property">history</span><span class="token operator">:</span> <span class="token function">createWebHistory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  routes<span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> router<span class="token punctuation">;</span></code></pre>
+
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 挂在main.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> createApp <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> <span class="token string">'./style.css'</span>
+<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./App.vue'</span>
+<span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">"@/router"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">createApp</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>router<span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token string">"#app"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+<pre class="language-vue" data-language="vue"><code class="language-vue">&#x2F;&#x2F; App.vue
+&lt;template&gt;
+  &lt;!-- 放置路由容器 --&gt;
+  &lt;RouterView &#x2F;&gt;
+  &lt;button @click&#x3D;&quot;lickLogin&quot;&gt;跳到登陆页面&lt;&#x2F;button&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script setup lang&#x3D;&quot;ts&quot;&gt;
+import &#123; useRouter &#125; from &quot;vue-router&quot;;
+
+const router&#x3D;useRouter()
+
+function lickLogin() &#123;
+  router.push(&#39;&#x2F;login&#39;)
+&#125;
+&lt;&#x2F;script&gt;
+
+&lt;style scoped&gt;
+&lt;&#x2F;style&gt;</code></pre>
+
+
+
+<h2 id="配置-pinia-状态管理"><a href="#配置-pinia-状态管理" class="headerlink" title="配置 pinia 状态管理"></a>配置 pinia 状态管理</h2><blockquote>
+<p>安装  pnpm add pinia    <a target="_blank" rel="noopener" href="https://pinia.web3doc.top/introduction.html">大菠萝官方文档</a></p>
+</blockquote>
+<ul>
+<li><p>router文件夹下新建index.ts和 user.ts</p>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// index.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> createPinia <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"pinia"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">createPinia</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> store<span class="token punctuation">;</span>
+
+
+<span class="token comment">// user.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> defineStore <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"pinia"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> useUserStore <span class="token operator">=</span> <span class="token function">defineStore</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+  <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token parameter">StateTs</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Hello Pinia"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">actions</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">updateName</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">name</span><span class="token operator">:</span> string <span class="token operator">|</span> number</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">StateTs</span> <span class="token punctuation">&#123;</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> string <span class="token operator">|</span> number<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
+</li>
+<li><p>main.ts 引入</p>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> createApp <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> createPinia <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"pinia"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">'./style.css'</span>
+<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./App.vue'</span>
+
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">createApp</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span>
+<span class="token keyword">const</span> pinia <span class="token operator">=</span> <span class="token function">createPinia</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+pinia<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>piniaPluginPersistedstate<span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>pinia<span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span></code></pre>
+</li>
+<li><p>页面使用</p>
+<pre class="language-vue" data-language="vue"><code class="language-vue">&#x2F;&#x2F; views&#x2F;index.vue 下面
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;h1 class&#x3D;&quot;test&quot;&gt;首页index&lt;&#x2F;h1&gt;
+    &lt;h2&gt;Store： &#123;&#123; userStore.name &#125;&#125;&lt;&#x2F;h2&gt;
+  &lt;&#x2F;div&gt;
+  
+&lt;&#x2F;template&gt;
+
+&lt;script setup lang&#x3D;&quot;ts&quot;&gt;
+import &#123; useUserStore &#125; from &quot;@&#x2F;store&#x2F;user&quot;
+
+const userStore &#x3D; useUserStore()
+console.log(userStore.name);
+&lt;&#x2F;script&gt;
+
+&lt;style scoped lang&#x3D;&quot;scss&quot;&gt;
+.test &#123;
+  color: $test-color;
+&#125;
+&lt;&#x2F;style&gt;</code></pre></li>
+</ul>
+<h2 id="配置-scss-预处理器"><a href="#配置-scss-预处理器" class="headerlink" title="配置 scss 预处理器"></a>配置 scss 预处理器</h2><ul>
+<li>安装</li>
+</ul>
+<pre class="language-none"><code class="language-none">pnpm add sass</code></pre>
+
+<ul>
+<li>配置全局 scss</li>
+</ul>
+<p>在<code>style</code>下新增<code>main.scss</code>文件夹，用来存放全局样式文件</p>
+<pre class="language-none"><code class="language-none">&#x2F;&#x2F; main.scss 设置一个全局变量
+$test-color: red;</code></pre>
+
+<ul>
+<li>配置<code>vite.config.ts</code></li>
+</ul>
+<pre class="language-none"><code class="language-none">css:&#123;
+  preprocessorOptions:&#123;
+    scss:&#123;
+      additionalData: &#39;@import &quot;@&#x2F;style&#x2F;main.scss&quot;;&#39;,
+    &#125;
+  &#125;
+&#125;,
+这样就可以全局使用scss中定义的变量了</code></pre>
+
+<ul>
+<li>组件中使用</li>
+</ul>
+<pre class="language-none"><code class="language-none">&#x2F;&#x2F; 不用引入直接使用即可
+.test&#123;
+  color: $test-color;
+&#125;</code></pre>
+
+
+
+<h2 id="配置自动引入插件"><a href="#配置自动引入插件" class="headerlink" title="配置自动引入插件"></a>配置自动引入插件</h2><blockquote>
+<p>安装 pnpm add unplugin-auto-import    <a target="_blank" rel="noopener" href="https://juejin.cn/post/7050668133404639268">掘金文章</a></p>
+</blockquote>
+<pre class="language-json" data-language="json"><code class="language-json"><span class="token comment">// vite.config.js</span>
+import AutoImport from <span class="token string">"unplugin-auto-import/vite"</span>
+...
+plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">[</span>vue()<span class="token punctuation">]</span><span class="token punctuation">,</span>  <span class="token comment">// 网上配置都没有留下这个，但是我不加上会报错</span>
+    AutoImport(<span class="token punctuation">&#123;</span>
+        <span class="token comment">// 自动导入vue、vue-router、pinia相关函数</span>
+        imports<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"vue"</span><span class="token punctuation">,</span> <span class="token string">"vue-router"</span><span class="token punctuation">,</span> <span class="token string">"pinia"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 
+        dts<span class="token operator">:</span> <span class="token string">"src/auto-import.d.ts"</span><span class="token punctuation">,</span> <span class="token comment">// 生成 `auto-import.d.ts` 全局声明</span>
+    <span class="token punctuation">&#125;</span>)<span class="token punctuation">,</span>
+...
+<span class="token punctuation">]</span><span class="token punctuation">,</span></code></pre>
+
+
+
+<h2 id="配置axios拦截器"><a href="#配置axios拦截器" class="headerlink" title="配置axios拦截器"></a>配置axios拦截器</h2><blockquote>
+<p>安装 pnpm add axios   <a target="_blank" rel="noopener" href="https://www.axios-http.cn/docs/intro">官方文档</a></p>
+</blockquote>
+<ul>
+<li><p>api文件夹下新建index.ts</p>
+<pre class="language-typescript" data-language="typescript"><code class="language-typescript"><span class="token comment">// 没有封装,只是方便配置拦截器</span>
+<span class="token comment">// 还没有写状态码对于提示，因为咱的后端没整什么规范（我也是）,后续有需要自己跳转，这里啥也没配置</span>
+<span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">"axios"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> AxiosToken <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+  <span class="token comment">// baseURL 将自动加在 `url` 前面，除非 `url` 是一个绝对 URL。</span>
+  <span class="token comment">// 这里的'/api'是为了代理，要和vite.config.ts里的proxy保持一致</span>
+  baseURL<span class="token operator">:</span> <span class="token string">"/api"</span><span class="token punctuation">,</span>
+  <span class="token comment">// 指定请求超时的毫秒数。</span>
+  timeout<span class="token operator">:</span> <span class="token number">10000</span><span class="token punctuation">,</span>
+  <span class="token comment">// 自定义请求头</span>
+  headers<span class="token operator">:</span> <span class="token punctuation">&#123;</span> <span class="token string-property property">"X-Requested-With"</span><span class="token operator">:</span> <span class="token string">"XMLHttpRequest"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 添加请求拦截器</span>
+AxiosToken<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>
+  <span class="token punctuation">(</span>config<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 在发送请求之前做些什么</span>
+    <span class="token keyword">return</span> config<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 对请求错误做些什么</span>
+    <span class="token keyword">return</span> <span class="token builtin">Promise</span><span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 添加响应拦截器</span>
+AxiosToken<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>response<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>
+  <span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 2xx 范围内的状态码都会触发该函数。</span>
+    <span class="token comment">// 对响应数据做点什么</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'响应码：'</span><span class="token punctuation">,</span> response<span class="token punctuation">.</span>status<span class="token punctuation">,</span> <span class="token string">"响应成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> response<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 超出 2xx 范围的状态码都会触发该函数。</span>
+    <span class="token comment">// 对响应错误做点什么</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">return</span> <span class="token builtin">Promise</span><span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> AxiosToken<span class="token punctuation">;</span></code></pre>
+</li>
+<li><p>请求文件</p>
+<p>我这里新建了test文件夹来准备放登陆和主页的请求，可按自己习惯来</p>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// api/test/login.ts</span>
+
+<span class="token keyword">import</span> AxiosToken <span class="token keyword">from</span> <span class="token string">"../index"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token punctuation">&#123;</span> request <span class="token punctuation">&#125;</span> <span class="token operator">=</span> AxiosToken<span class="token punctuation">;</span>
+<span class="token keyword">let</span> remoteUrl <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">LoginAki</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">/**手机 */</span>
+  <span class="token literal-property property">phone</span><span class="token operator">:</span> string<span class="token punctuation">;</span>
+  <span class="token comment">/**密码 */</span>
+  <span class="token literal-property property">password</span><span class="token operator">:</span> string<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">// 这里我是前面配置了自动引入pinia，要是报错记得检查一下</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> userAkiStore <span class="token operator">=</span> <span class="token function">defineStore</span><span class="token punctuation">(</span><span class="token string">"userAki"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">//网易云api登陆接口</span>
+  <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">userLogin</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">params</span><span class="token operator">:</span> LoginAki</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">await</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+      <span class="token literal-property property">url</span><span class="token operator">:</span> remoteUrl <span class="token operator">+</span> <span class="token string">"/login/cellphone"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"get"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">params</span><span class="token operator">:</span> params<span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">&#123;</span> userLogin <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+
+</li>
+<li><p>使用请求</p>
+<pre class="language-vue" data-language="vue"><code class="language-vue">&#x2F;&#x2F; login.vue
+
+&lt;template&gt;
+  &lt;div v-if&#x3D;&quot;userData&quot;&gt;
+    &lt;img :src&#x3D;&quot;userData.avatarUrl&quot; style&#x3D;&quot;width: 100px;height: 100px;border-radius: 50%;&quot; &#x2F;&gt;
+    &lt;h1 class&#x3D;&quot;test&quot;&gt;&#123;&#123; userData.nickname &#125;&#125;&lt;&#x2F;h1&gt;
+    &lt;div&gt;&#123;&#123; userData.signature &#125;&#125;&lt;&#x2F;div&gt;
+  &lt;&#x2F;div&gt;
+  &lt;div&gt;
+    &lt;input v-model&#x3D;&quot;loginForm.phone&quot; &#x2F;&gt;
+    &lt;input v-model&#x3D;&quot;loginForm.password&quot; type&#x3D;&quot;password&quot; &#x2F;&gt;
+  &lt;&#x2F;div&gt;
+
+  &lt;button @click&#x3D;&quot;Login&quot;&gt;登录&lt;&#x2F;button&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script setup lang&#x3D;&quot;ts&quot;&gt;
+import &#123; userAkiStore &#125; from &quot;@&#x2F;api&#x2F;test&#x2F;login&quot;;
+const loginForm &#x3D; reactive(&#123;
+  phone: &quot;&quot;,
+  password: &quot;&quot;,
+&#125;);
+
+const StoreLing &#x3D; userAkiStore();
+const userData &#x3D; ref()
+
+async function GetDateShang(data: LoginAki) &#123;
+  return await StoreLing.userLogin(data)
+    .then((res) &#x3D;&gt; &#123;
+      userData.value &#x3D; res.data.profile
+    &#125;)
+    .then((err) &#x3D;&gt; &#123;
+      return err;
+    &#125;);
+&#125;
+function Login() &#123;
+  GetDateShang(loginForm);
+&#125;
+
+interface LoginAki &#123;
+  &#x2F;**手机 *&#x2F;
+  phone: string;
+  &#x2F;**密码 *&#x2F;
+  password: string;
+&#125;
+&lt;&#x2F;script&gt;</code></pre></li>
+</ul>
+<h2 id="配置组件库"><a href="#配置组件库" class="headerlink" title="配置组件库"></a>配置组件库</h2><p> Naive UI</p>
+<blockquote>
+<p>安装  pnpm add @douyinfe&#x2F;semi-ui   [文档](<a target="_blank" rel="noopener" href="https://www.naiveui.com/zh-CN/light">Naive UI: 一个 Vue 3 组件库</a>)</p>
+</blockquote>
+<ul>
+<li><p>配置按需引入 （使用前面配置过的unplugin-auto-import，还需要安装unplugin-vue-components）</p>
+<blockquote>
+<p>安装 pnpm add unplugin-vue-components</p>
+</blockquote>
+<pre class="language-json" data-language="json"><code class="language-json">import Components from <span class="token string">"unplugin-vue-components/vite"</span>;
+import <span class="token punctuation">&#123;</span> NaiveUiResolver <span class="token punctuation">&#125;</span> from <span class="token string">"unplugin-vue-components/resolvers"</span>;
+
+plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+  ......
+    AutoImport(<span class="token punctuation">&#123;</span>
+        imports<span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"vue"</span><span class="token punctuation">,</span>
+            <span class="token string">"vue-router"</span><span class="token punctuation">,</span>
+            <span class="token string">"pinia"</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#123;</span>
+                <span class="token property">"naive-ui"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token string">"useDialog"</span><span class="token punctuation">,</span>
+                    <span class="token string">"useMessage"</span><span class="token punctuation">,</span>
+                    <span class="token string">"useNotification"</span><span class="token punctuation">,</span>
+                    <span class="token string">"useLoadingBar"</span><span class="token punctuation">,</span>
+                <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 自动导入vue、vue-router、pinia相关函数</span>
+        dts<span class="token operator">:</span> <span class="token string">"src/auto-import.d.ts"</span><span class="token punctuation">,</span> <span class="token comment">// 生成 `auto-import.d.ts` 全局声明</span>
+    <span class="token punctuation">&#125;</span>)<span class="token punctuation">,</span>
+    Components(<span class="token punctuation">&#123;</span>
+      resolvers<span class="token operator">:</span> <span class="token punctuation">[</span>NaiveUiResolver()<span class="token punctuation">]</span>
+    <span class="token punctuation">&#125;</span>)<span class="token punctuation">,</span>
+  ......
+<span class="token punctuation">]</span></code></pre></li>
+</ul>
+<div class="text-center">
+  <img src="/image/bqb1.jpg" alt="portrait"  loading="lazy">
+</div>
+
+<hr>
+<h2 id="使用svg图标"><a href="#使用svg图标" class="headerlink" title="使用svg图标"></a>使用svg图标</h2><blockquote>
+<p>安装  pnpm add naive-ui -D  <a target="_blank" rel="noopener" href="https://juejin.cn/post/7094060278475653128">掘金文章</a></p>
+</blockquote>
+<ul>
+<li>配置vite.config.ts</li>
+</ul>
+<pre class="language-json" data-language="json"><code class="language-json">import <span class="token punctuation">&#123;</span> createSvgIconsPlugin <span class="token punctuation">&#125;</span> from <span class="token string">"vite-plugin-svg-icons"</span>;
+import path from <span class="token string">"path"</span>;
+
+plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+   ...
+     createSvgIconsPlugin(<span class="token punctuation">&#123;</span>
+         <span class="token comment">// 指定需要缓存的图标文件夹</span>
+         iconDirs<span class="token operator">:</span> <span class="token punctuation">[</span>path.resolve(process.cwd()<span class="token punctuation">,</span> <span class="token string">"src/assets/svg"</span>)<span class="token punctuation">]</span><span class="token punctuation">,</span>
+         <span class="token comment">// 指定symbolId格式</span>
+         symbolId<span class="token operator">:</span> <span class="token string">"icon-[dir]-[name]"</span><span class="token punctuation">,</span>
+     <span class="token punctuation">&#125;</span>)<span class="token punctuation">,</span>
+   ...
+ <span class="token punctuation">]</span><span class="token punctuation">,</span></code></pre>
+
+<ul>
+<li>封装SvgIcon组件</li>
+</ul>
+<pre class="language-vue" data-language="vue"><code class="language-vue">&#x2F;&#x2F; src&#x2F;components&#x2F;SvgIcon
+
+&lt;template&gt;
+  &lt;svg aria-hidden&#x3D;&quot;true&quot;&gt;
+    &lt;use :href&#x3D;&quot;symbolId&quot; :fill&#x3D;&quot;color&quot; &#x2F;&gt;
+  &lt;&#x2F;svg&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script lang&#x3D;&quot;ts&quot;&gt;
+import &#123; defineComponent, computed &#125; from &#39;vue&#39;
+
+export default defineComponent(&#123;
+  name: &#39;SvgIcon&#39;,
+  props: &#123;
+    prefix: &#123;
+      type: String,
+      default: &#39;icon&#39;,
+    &#125;,
+    name: &#123;
+      type: String,
+      required: true,
+    &#125;,
+    color: &#123;
+      type: String,
+      default: &#39;#333&#39;,
+    &#125;,
+  &#125;,
+  setup(props) &#123;
+    const symbolId &#x3D; computed(() &#x3D;&gt; &#96;#$&#123;props.prefix&#125;-$&#123;props.name&#125;&#96;)
+    return &#123; symbolId &#125;
+  &#125;,
+&#125;)
+&lt;&#x2F;script&gt;</code></pre>
+
+<ul>
+<li>配置main.ts</li>
+</ul>
+<pre class="language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token string">"virtual:svg-icons-register"</span><span class="token punctuation">;</span>				<span class="token comment">// 新增</span>
+<span class="token keyword">import</span> SvgIcon <span class="token keyword">from</span> <span class="token string">"@/components/SvgIcon.vue"</span><span class="token punctuation">;</span>		<span class="token comment">// 新增</span>
+
+app<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">"svg-icon"</span><span class="token punctuation">,</span> SvgIcon<span class="token punctuation">)</span><span class="token punctuation">;</span>			<span class="token comment">// 新增</span></code></pre>
+
+<ul>
+<li><p>页面中使用</p>
+<pre class="language-vue" data-language="vue"><code class="language-vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;SvgIcon name&#x3D;&quot;genshin&quot; style&#x3D;&quot;width: 50px; height: 50px&quot; &#x2F;&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script setup lang&#x3D;&quot;ts&quot;&gt;
+import SvgIcon from &quot;@&#x2F;components&#x2F;SvgIcon.vue&quot;
+&lt;&#x2F;script&gt;</code></pre></li>
+</ul>
+<h2 id="配置xicons自动引入"><a href="#配置xicons自动引入" class="headerlink" title="配置xicons自动引入"></a>配置xicons自动引入</h2><blockquote>
+<p>安装 pnpm add -D unplugin-icons <a target="_blank" rel="noopener" href="https://juejin.cn/post/7095460309673967646">掘金文章</a> <a target="_blank" rel="noopener" href="https://icones.js.org/">图标库</a></p>
+</blockquote>
+<pre class="language-json" data-language="json"><code class="language-json"><span class="token comment">// 搭配前面unplugin-vue-components一起使用</span>
+
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
+plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+ ......
+  Components(<span class="token punctuation">&#123;</span>
+    resolvers<span class="token operator">:</span> <span class="token punctuation">[</span>
+      NaiveUiResolver()<span class="token punctuation">,</span>
+      <span class="token comment">// 新增的</span>
+      IconsResolver(<span class="token punctuation">&#123;</span>   
+        prefix<span class="token operator">:</span> 'icon'<span class="token punctuation">,</span> <span class="token comment">// 自动引入的Icon组件统一前缀，默认为 i，设置false为不需要前缀</span>
+        <span class="token comment">// &#123;prefix&#125;-&#123;collection&#125;-&#123;icon&#125; 使用组件解析器时，您必须遵循名称转换才能正确推断图标。</span>
+        <span class="token comment">// alias: &#123; park: 'icon-park' &#125; 集合的别名</span>
+        enabledCollections<span class="token operator">:</span> <span class="token punctuation">[</span>'ep'<span class="token punctuation">]</span> <span class="token comment">// 这是可选的，默认启用 Iconify 支持的所有集合['mdi']</span>
+      <span class="token punctuation">&#125;</span>)<span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#125;</span>)<span class="token punctuation">,</span>
+  Icons(<span class="token punctuation">&#123;</span>
+    <span class="token comment">// scale: 1, // 缩放</span>
+    compiler<span class="token operator">:</span> 'vue3'<span class="token punctuation">,</span> <span class="token comment">// 编译方式</span>
+    <span class="token comment">// defaultClass: '', // 默认类名</span>
+    <span class="token comment">// defaultStyle: '', // 默认样式</span>
+    autoInstall<span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token comment">// jsx: 'react' // jsx支持</span>
+  <span class="token punctuation">&#125;</span>)<span class="token punctuation">,</span>
+ ......
+<span class="token punctuation">]</span></code></pre>
+
+<ul>
+<li>使用<pre class="language-vue" data-language="vue"><code class="language-vue">去官网复制图标name
+不需要下载图标库，系统会自动按需下载。
+&lt;IconEpFold class&#x3D;&quot;v-icon&quot; &#x2F;&gt;
+
+.v-icon &#123;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  font-size: 1em;
+&#125;</code></pre></li>
+</ul>
+<h2 id="配置半自动化路由"><a href="#配置半自动化路由" class="headerlink" title="配置半自动化路由"></a>配置半自动化路由</h2><blockquote>
+<p>自己水平垃圾了，写完后也不太好整理。</p>
+<p>我的仓库地址放这里，可以直接参考还方便一点 <a target="_blank" rel="noopener" href="https://github.com/AkiSeele/aki-viteTem">仓库地址</a></p>
+</blockquote>
+<ul>
+<li><p>文件夹格式</p>
+<ul>
+<li>路由文件夹</li>
+<li><img src="https://s1.ax1x.com/2022/11/04/xqjfe0.png" alt="路由" loading="lazy"></li>
+<li>layout文件夹</li>
+<li><img src="https://s1.ax1x.com/2022/11/04/xqjjw6.png" alt="layout" loading="lazy"></li>
+</ul>
+</li>
+<li><p>效果图</p>
+<ul>
+<li><img src="https://s1.ax1x.com/2022/11/04/xqxP4U.png" alt="首页" loading="lazy"></li>
+<li><img src="https://s1.ax1x.com/2022/11/04/xqxZuR.png" alt="案件上报" loading="lazy"></li>
+</ul>
+</li>
+<li><p>主题颜色修改</p>
+</li>
+</ul>
+<blockquote>
+<p>因为使用的是Naive UI 修改主题挺方便的，官方也有详细的教程  <a target="_blank" rel="noopener" href="https://www.naiveui.com/zh-CN/os-theme/docs/customize-theme#%E8%B0%83%E6%95%B4%E4%B8%BB%E9%A2%98%E5%8F%98%E9%87%8F">官方文档</a></p>
+</blockquote>
+<pre class="language-vue" data-language="vue"><code class="language-vue">&#x2F;&#x2F;   App.vue
+
+&lt;template&gt;
+  &lt;!-- 放置路由容器 --&gt;
+  &lt;div id&#x3D;&quot;app&quot;&gt;
+    &lt;n-config-provider :theme-overrides&#x3D;&quot;themeOverrides&quot;&gt;
+      &lt;RouterView &#x2F;&gt;
+    &lt;&#x2F;n-config-provider&gt;
+  &lt;&#x2F;div&gt;
+  
+&lt;&#x2F;template&gt;
+
+&lt;script setup lang&#x3D;&quot;ts&quot;&gt;
+import &#123; NConfigProvider, GlobalThemeOverrides &#125; from &#39;naive-ui&#39;
+
+const themeOverrides: GlobalThemeOverrides &#x3D; &#123;
+  &#x2F;&#x2F; 这里设置你想要的颜色就可以啦
+  &#x2F;&#x2F; 具体可使用变量请参考 GlobalThemeOverrides 类型提示。
+  common: &#123;
+    primaryColor: &#39;#5593F9&#39;
+  &#125;,
+  Button: &#123;
+    textColor: &#39;#5593F9&#39;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;
+
+&lt;style scoped&gt;
+&lt;&#x2F;style&gt;</code></pre>
+
+
+
+<blockquote>
+<p>一些小问题</p>
+<p>Naive的菜单组件，为了方便自动实现，我就关了路由的类型校验RouteRecordRaw（谁来教教我ts啊）</p>
+</blockquote>
+</div></section></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/2022/12/19/practice/" rel="prev" title="练习补充笔记"><span class="icon iconify" data-icon="ri:arrow-left-s-line"></span><span class="post-nav-text">练习补充笔记</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/2022/12/19/course/Echarts/" rel="next" title="Echarts配置项"><span class="post-nav-text">Echarts配置项</span><span class="icon iconify" data-icon="ri:arrow-right-s-line"></span></a></div></div></div><div class="hty-card" id="comment"><div id="waline"></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@waline/client@v2/dist/waline.css"><script>window.CONFIG.waline.config.path = "/2022/12/19/course/vite/"</script><div class="js-Pjax"><script src="/js/comments/waline.js" type="module" defer></script></div></div></main><footer class="sidebar-translate" id="footer"><div class="beian"><a rel="noopener" href="https://beian.miit.gov.cn/" target="_blank">鄂ICP备2022016601号-1</a></div><div class="copyright"><span>&copy; 2019 – 2022 </span><a class="with-love" id="animate" target="_blank" rel="noopener" href="https://github.com/AkiSeele" title="可爱滴捏"><span class="icon iconify" data-icon="ri:cloud-line"></span></a><span class="author"> Aki Seele</span></div><a class="flex-center" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030902003626"><img src="data:image/png;base64, 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">&nbsp;<span>粤公网安备 44030902003626号</span></a><div class="footer-support"><span>本网站由</span><a class="footer-support-logo" href="https://www.upyun.com/?utm_source=lianmeng&amp;utm_medium=referral" target="blank" title="又拍云"><img height="30" src="https://s1.ax1x.com/2022/10/18/xrUBHx.png" alt="又拍云"></a><span>提供 CDN 加速</span></div></footer></div><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><span class="icon iconify" data-icon="ri:arrow-up-s-line"></span><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/hk416.model.json"},"display":{"position":"left","width":250,"height":400},"mobile":{"show":false},"react":{"opacity":2},"log":false});</script></body></html>
