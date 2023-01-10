@@ -129,6 +129,32 @@ computed: {
 },
 ```
 
+## 自定义指令
+
+```ts
+// 监听绑定元素的宽高变化
+// vue3写法：
+const vResize = {
+  beforeMount(el: any, binding: any) {
+    // el为绑定的元素，binding为绑定给指令的对象
+    let width = "",
+      height = "";
+    function isReize() {
+      const style = document.defaultView!.getComputedStyle(el);
+      if (width !== style.width || height !== style.height) {
+        binding.value(); // 关键
+      }
+      width = style.width;
+      height = style.height;
+    }
+    // el.__vueSetInterval__ = setInterval(isReize, 300);
+    el.__vueSetInterval__ = setInterval(isReize);
+  },
+  unmounted(el: any) {
+    clearInterval(el.__vueSetInterval__);
+  },
+};
+```
 
 ## 获取openID
 

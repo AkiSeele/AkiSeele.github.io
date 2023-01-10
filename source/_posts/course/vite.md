@@ -667,16 +667,13 @@ plugins: [
   - 路由文件夹
   - ![路由](https://s1.ax1x.com/2022/11/04/xqjfe0.png)
   - layout文件夹
-  - ![layout](https://s1.ax1x.com/2022/11/04/xqjjw6.png)
+  - ![layout](https://s1.ax1x.com/2022/12/19/zqIVdx.png)
 
 
 
 - 效果图
+  - ![首页](https://s1.ax1x.com/2022/12/19/zqISiT.png)
 
-  - ![首页](https://s1.ax1x.com/2022/11/04/xqxP4U.png)
-  - ![案件上报](https://s1.ax1x.com/2022/11/04/xqxZuR.png)
-
-  
 
 - 主题颜色修改
 
