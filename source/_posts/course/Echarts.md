@@ -41,15 +41,15 @@ grid: {
 * 可以设置在系列中，即 series.tooltip
 * 可以设置在系列的每个数据项中，即 series.data.tooltip
 tooltip: {
-    formatter: function(params) {
-        //定义数据前的圆点
-        let dotHtml1 = '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:rgb(94,151,245)"></span>'; 
-        let dotHtml2 = '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:rgb(249,199,95)"></span>'; 
-        let dotHtml3 = '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#37A3BF"></span>'; 
-        return ("标题" + "：" + "<br />" + dotHtml1 + "名称1" + "：" + "内容1" + "（件）" + "<br />" + dotHtml2 + "名称2" + "：" + "内容2" + "（件）" + "<br />" );
+    formatter: function (params: any) {
+      //定义数据前的圆点
+      let dotHtml1 = `<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color: ${params.color}"></span>`;
+      return `案件类型：<br />${dotHtml1} ${params.name}：${params.value}（件），占比：
+      `;
     },
 },
 // X轴
+// https://blog.csdn.net/hhf235678/article/details/79899464
 xAxis: {
     // 防止x轴数据太多会隐藏
     axisLabel: {  
@@ -57,6 +57,15 @@ xAxis: {
         rotate:-20  
     },
     inverse: true,	 //倒序
+}
+yAxis: {
+    // 自定义数值
+     axisLabel: {
+      formatter: function (value: any) {
+        console.log(value);
+        return value + " °C";
+      },
+    },
 }
 
 //  点击图表触发事件
@@ -331,4 +340,84 @@ if (type == "EchartsOne") {
 }
 return option;
 },
+```
+
+
+
+```tsx
+<template>
+  <div
+    style="height: 100%; width: 100%; position: relative"
+    v-resize="resizeOf"
+  >
+    <!-- <n-card  style="height: 100%;width: 100%;"> -->
+    <slot name="content" :Uid="Uid"> </slot>
+    <!-- </n-card> -->
+  </div>
+</template>
+
+<script setup lang="ts">
+import * as echarts from "echarts";
+import { debounce } from "@/utils/utils";
+
+let Echarts: any;
+const props = defineProps({
+  options: {
+    type: Object,
+    default: {},
+  },
+  Uid: {
+    type: String,
+    default: "",
+  },
+});
+
+const { options } = toRefs(props);
+
+nextTick(() => {
+  initChart();
+});
+watch(
+  () => options.value,
+  (value, oldvalue) => {
+    Echarts.setOption(value);
+  },
+  { deep: true }
+);
+
+// 基础配置一下Echarts
+function initChart() {
+  Echarts = echarts.init(document.getElementById(props.Uid)!);
+  // 把配置和数据放这里
+  Echarts.setOption(options.value);
+}
+
+// 自定义指令监听宽高变化，来重置图表
+const resizeOf = debounce(() => {
+  Echarts.resize();
+}, 0);
+
+const vResize = {
+  beforeMount(el: any, binding: any) {
+    // el为绑定的元素，binding为绑定给指令的对象
+    let width = "",
+      height = "";
+    function isReize() {
+      const style = document.defaultView!.getComputedStyle(el);
+      if (width !== style.width || height !== style.height) {
+        binding.value(); // 关键
+      }
+      width = style.width;
+      height = style.height;
+    }
+    // el.__vueSetInterval__ = setInterval(isReize, 300);
+    el.__vueSetInterval__ = setInterval(isReize);
+  },
+  unmounted(el: any) {
+    clearInterval(el.__vueSetInterval__);
+  },
+};
+</script>
+
+<style lang="scss" scoped></style>
 ```
