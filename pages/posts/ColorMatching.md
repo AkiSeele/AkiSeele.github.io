@@ -1,12 +1,10 @@
 ---
-title: Ego_TDC24配色
+title: 配色方案
 tags:
   - 笔记
 categories:
   - 笔记
 ---
-
-# Ego_TDC24
 
 > Ego_TDC24 大佬的配色
 
