@@ -1,6 +1,6 @@
 import { defineSiteConfig } from "valaxy";
 export default defineSiteConfig({
-  url: "https://akibro.top/",
+  url: "http://akibro.top/",
   lang: "zh-CN",
   author: {
     name: "Aki Seele",
