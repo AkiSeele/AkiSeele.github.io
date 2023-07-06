@@ -1,10 +1,11 @@
 ---
 title: Vite项目搭建
+date: 2022-11-03
+updated: 2023-11-03
 tags:
   - 教程
 categories:
   - 教程
-data: 2022-11-03
 # type: yuque
 # url:
 ---

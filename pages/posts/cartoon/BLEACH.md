@@ -1,5 +1,7 @@
 ---
 title: 《BLEACH》
+date: 2022-11-03
+updated: 2022-11-04
 tags:
   - ACGN
   - 漫画

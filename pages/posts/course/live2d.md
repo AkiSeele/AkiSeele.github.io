@@ -1,5 +1,7 @@
 ---
 title: Hexo少前live2d使用指南
+date: 2022-6-2 12:00:55
+updated: 2022-6-3 13:21:06
 tags:
   - 教程
 categories:
