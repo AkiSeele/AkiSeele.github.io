@@ -11,7 +11,6 @@ export default defineValaxyConfig<UserThemeConfig>({
   // site config see site.config.ts
 
   theme: "yun",
-
   themeConfig: {
     bg_image: {
       enable: true,

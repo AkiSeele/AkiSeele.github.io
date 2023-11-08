@@ -1,6 +1,6 @@
 import { defineSiteConfig } from "valaxy";
 export default defineSiteConfig({
-  url: "https://akibro.top/",
+  url: "akiseele.top",
   lang: "zh-CN",
   author: {
     name: "Aki Seele",
@@ -56,13 +56,17 @@ export default defineSiteConfig({
   ],
 
   search: {
-    enable: false,
+    enable: true,
+    // 设置类型为 Fuse
+    type: "fuse",
   },
-
+  mediumZoom: {
+    enable: true,
+  },
   sponsor: {
     enable: true,
     title: "我很穷，请给我钱（伸手）",
-    description: '我很穷，请给我钱（伸手）',
+    description: "我很穷，请给我钱（伸手）",
     methods: [
       {
         name: "支付宝",
@@ -84,7 +88,7 @@ export default defineSiteConfig({
       },
     ],
   },
-  license:{
-    enabled: false
-  }
+  license: {
+    enabled: false,
+  },
 });

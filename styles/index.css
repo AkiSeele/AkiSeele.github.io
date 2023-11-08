@@ -1,9 +1,9 @@
-// 全局样式
 .HideBlock {
   background: #000;
   color: #000;
   transition: all 0.2s;
 }
+
 .HideBlock:hover {
   background: none;
 }
