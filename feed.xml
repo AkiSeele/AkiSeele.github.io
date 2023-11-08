@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>舰舰的奇妙见闻</title>
+        <link>akiseele.top/</link>
+        <description></description>
+        <lastBuildDate>Wed, 08 Nov 2023 09:21:49 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <image>
+            <title>舰舰的奇妙见闻</title>
+            <url>https://akiimage-1314209857.cos.ap-guangzhou.myqcloud.com/image/202307031757567.png</url>
+            <link>akiseele.top/</link>
+        </image>
+        <copyright>CC BY-NC-SA 4.0 2023 © Aki Seele</copyright>
+        <atom:link href="akiseele.top/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Vite项目搭建]]></title>
+            <link>akiseele.top/posts/course/vite</link>
+            <guid>akiseele.top/posts/course/vite</guid>
+            <pubDate>Fri, 03 Nov 2023 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>创建脚手架</h2>
+<p>建议使用 pnpm 搭建项目雏形</p>
+<blockquote>
+<p>pnpm create vite</p>
+</blockquote>
+<h2>目录结构</h2>
+<pre><code>// 记得先把文件夹创建好哦,后面跟着步骤创建也可以
+├── pubilc
+</code></pre>
+]]></content:encoded>
+            <author>i@valaxy.site (Aki Seele)</author>
+        </item>
+        <item>
+            <title><![CDATA[Echarts配置项]]></title>
+            <link>akiseele.top/posts/course/Echarts</link>
+            <guid>akiseele.top/posts/course/Echarts</guid>
+            <pubDate>Thu, 10 Aug 2023 13:21:06 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>部分配置项</h2>
+<pre><code class="language-js">// 顶部图例
+legend: {
+	top: 22,	// 同css定位top
+    right: 24,  // 同css定位right
+    itemGap:</code></pre>
+]]></content:encoded>
+            <author>i@valaxy.site (Aki Seele)</author>
+        </item>
+        <item>
+            <title><![CDATA[命名习惯规则]]></title>
+            <link>akiseele.top/posts/NamingRules</link>
+            <guid>akiseele.top/posts/NamingRules</guid>
+            <pubDate>Thu, 06 Jul 2023 16:21:06 GMT</pubDate>
+            <content:encoded><![CDATA[<h3>方法名</h3>
+<blockquote>
+<p>初始化 <code>AkiGive()</code></p>
+<p>表单提交 <code>onSubmit()</code></p>
+<p>新增 <code>addFunc()</code></p>
+<p>删除 <code>deleteFunc()</code></p>
+</blockquote>
+]]></content:encoded>
+            <author>i@valaxy.site (Aki Seele)</author>
+        </item>
+        <item>
+            <title><![CDATA[刀剑神域]]></title>
+            <link>akiseele.top/posts/novel/SAO</link>
+            <guid>akiseele.top/posts/novel/SAO</guid>
+            <pubDate>Sun, 02 Jul 2023 12:21:06 GMT</pubDate>
+            <content:encoded><![CDATA[<blockquote>
+<h5>小说地址</h5>
+<p><a href="https://pan.baidu.com/s/1iCHszockN0afIcNWT4aHOg?pwd=j7l4">百度云</a> <em>提取码（j7l4）</em></p>
+</blockquote>
+]]></content:encoded>
+            <author>i@valaxy.site (Aki Seele)</author>
+        </item>
+        <item>
+            <title><![CDATA[配色方案]]></title>
+            <link>akiseele.top/posts/ColorScheme</link>
+            <guid>akiseele.top/posts/ColorScheme</guid>
+            <pubDate>Mon, 10 Apr 2023 16:21:06 GMT</pubDate>
+            <content:encoded><![CDATA[<blockquote>
+<p>Ego_TDC24 大佬的配色</p>
+</blockquote>
+<h3>阿晴</h3>
+<ul>
+<li>#CEBDCD</li>
+<li>#B0BEEF</li>
+<li>#716AB0</li>
+</ul>
+<p>![阿晴](<a href="https://akiimage-131420985">https://akiimage-131420985</a></p>
+]]></content:encoded>
+            <author>i@valaxy.site (Aki Seele)</author>
+        </item>
+        <item>
+            <title><![CDATA[Markdown语法]]></title>
+            <link>akiseele.top/posts/MDSyntax</link>
+            <guid>akiseele.top/posts/MDSyntax</guid>
+            <pubDate>Fri, 10 Feb 2023 16:21:06 GMT</pubDate>
+            <content:encoded><![CDATA[<blockquote>
+<p><strong>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，Markdown文件的后缀名便是“.md”。</strong><br>
+Markdown的语法十分简单，常用的标记符号不超过十</p>
+</blockquote>
+]]></content:encoded>
+            <author>i@valaxy.site (Aki Seele)</author>
+        </item>
+        <item>
+            <title><![CDATA[2023年1月新番推荐]]></title>
+            <link>akiseele.top/posts/animation/2023_1_Recom</link>
+            <guid>akiseele.top/posts/animation/2023_1_Recom</guid>
+            <pubDate>Sun, 04 Dec 2022 13:21:06 GMT</pubDate>
+            <content:encoded><![CDATA[<blockquote>
+<p><a href="https://yuc.wiki/">新番资讯</a> 全部参考 <a href="https://space.bilibili.com/30160">长门有C</a> 大佬</p>
+</blockquote>
+<h2>原创动画</h2>
+<ul>
+<li>阿鲁斯的巨</li>
+</ul>
+]]></content:encoded>
+            <author>i@valaxy.site (Aki Seele)</author>
+        </item>
+    </channel>
+</rss>

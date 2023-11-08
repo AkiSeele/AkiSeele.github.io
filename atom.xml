@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>akiseele.top/</id>
+    <title>舰舰的奇妙见闻</title>
+    <updated>2023-11-08T09:21:49.693Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <author>
+        <name>Aki Seele</name>
+        <email>i@valaxy.site</email>
+        <uri>https://valaxy.site</uri>
+    </author>
+    <link rel="alternate" href="akiseele.top/"/>
+    <link rel="self" href="akiseele.top/feed.atom"/>
+    <logo>https://akiimage-1314209857.cos.ap-guangzhou.myqcloud.com/image/202307031757567.png</logo>
+    <icon>akiseele.top/favicon.svg</icon>
+    <rights>CC BY-NC-SA 4.0 2023 © Aki Seele</rights>
+    <entry>
+        <title type="html"><![CDATA[Vite项目搭建]]></title>
+        <id>akiseele.top/posts/course/vite</id>
+        <link href="akiseele.top/posts/course/vite"/>
+        <updated>2022-11-03T00:00:00.000Z</updated>
+        <content type="html"><![CDATA[<h2>创建脚手架</h2>
+<p>建议使用 pnpm 搭建项目雏形</p>
+<blockquote>
+<p>pnpm create vite</p>
+</blockquote>
+<h2>目录结构</h2>
+<pre><code>// 记得先把文件夹创建好哦,后面跟着步骤创建也可以
+├── pubilc
+</code></pre>
+]]></content>
+        <author>
+            <name>Aki Seele</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2023-11-03T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Echarts配置项]]></title>
+        <id>akiseele.top/posts/course/Echarts</id>
+        <link href="akiseele.top/posts/course/Echarts"/>
+        <updated>2022-06-22T12:00:55.000Z</updated>
+        <content type="html"><![CDATA[<h2>部分配置项</h2>
+<pre><code class="language-js">// 顶部图例
+legend: {
+	top: 22,	// 同css定位top
+    right: 24,  // 同css定位right
+    itemGap:</code></pre>
+]]></content>
+        <author>
+            <name>Aki Seele</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2023-08-10T13:21:06.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[命名习惯规则]]></title>
+        <id>akiseele.top/posts/NamingRules</id>
+        <link href="akiseele.top/posts/NamingRules"/>
+        <updated>2023-07-06T16:00:55.000Z</updated>
+        <content type="html"><![CDATA[<h3>方法名</h3>
+<blockquote>
+<p>初始化 <code>AkiGive()</code></p>
+<p>表单提交 <code>onSubmit()</code></p>
+<p>新增 <code>addFunc()</code></p>
+<p>删除 <code>deleteFunc()</code></p>
+</blockquote>
+]]></content>
+        <author>
+            <name>Aki Seele</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2023-07-06T16:21:06.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[刀剑神域]]></title>
+        <id>akiseele.top/posts/novel/SAO</id>
+        <link href="akiseele.top/posts/novel/SAO"/>
+        <updated>2023-07-02T11:03:55.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<h5>小说地址</h5>
+<p><a href="https://pan.baidu.com/s/1iCHszockN0afIcNWT4aHOg?pwd=j7l4">百度云</a> <em>提取码（j7l4）</em></p>
+</blockquote>
+]]></content>
+        <author>
+            <name>Aki Seele</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2023-07-02T12:21:06.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[配色方案]]></title>
+        <id>akiseele.top/posts/ColorScheme</id>
+        <link href="akiseele.top/posts/ColorScheme"/>
+        <updated>2023-04-10T16:00:55.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>Ego_TDC24 大佬的配色</p>
+</blockquote>
+<h3>阿晴</h3>
+<ul>
+<li>#CEBDCD</li>
+<li>#B0BEEF</li>
+<li>#716AB0</li>
+</ul>
+<p>![阿晴](<a href="https://akiimage-131420985">https://akiimage-131420985</a></p>
+]]></content>
+        <author>
+            <name>Aki Seele</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2023-04-10T16:21:06.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Markdown语法]]></title>
+        <id>akiseele.top/posts/MDSyntax</id>
+        <link href="akiseele.top/posts/MDSyntax"/>
+        <updated>2023-02-10T16:00:55.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p><strong>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，Markdown文件的后缀名便是“.md”。</strong><br>
+Markdown的语法十分简单，常用的标记符号不超过十</p>
+</blockquote>
+]]></content>
+        <author>
+            <name>Aki Seele</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2023-02-10T16:21:06.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2023年1月新番推荐]]></title>
+        <id>akiseele.top/posts/animation/2023_1_Recom</id>
+        <link href="akiseele.top/posts/animation/2023_1_Recom"/>
+        <updated>2022-12-04T12:00:55.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p><a href="https://yuc.wiki/">新番资讯</a> 全部参考 <a href="https://space.bilibili.com/30160">长门有C</a> 大佬</p>
+</blockquote>
+<h2>原创动画</h2>
+<ul>
+<li>阿鲁斯的巨</li>
+</ul>
+]]></content>
+        <author>
+            <name>Aki Seele</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2022-12-04T13:21:06.000Z</published>
+    </entry>
+</feed>

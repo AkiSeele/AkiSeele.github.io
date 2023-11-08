@@ -1,0 +1,97 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "舰舰的奇妙见闻",
+    "home_page_url": "akiseele.top/",
+    "feed_url": "akiseele.top/feed.json",
+    "icon": "https://akiimage-1314209857.cos.ap-guangzhou.myqcloud.com/image/202307031757567.png",
+    "author": {
+        "name": "Aki Seele",
+        "url": "https://valaxy.site"
+    },
+    "items": [
+        {
+            "id": "",
+            "content_html": "<h2>创建脚手架</h2>\n<p>建议使用 pnpm 搭建项目雏形</p>\n<blockquote>\n<p>pnpm create vite</p>\n</blockquote>\n<h2>目录结构</h2>\n<pre><code>// 记得先把文件夹创建好哦,后面跟着步骤创建也可以\n├── pubilc\n</code></pre>\n",
+            "url": "akiseele.top/posts/course/vite",
+            "title": "Vite项目搭建",
+            "date_modified": "2022-11-03T00:00:00.000Z",
+            "date_published": "2023-11-03T00:00:00.000Z",
+            "author": {
+                "name": "Aki Seele",
+                "url": "https://valaxy.site"
+            }
+        },
+        {
+            "id": "",
+            "content_html": "<h2>部分配置项</h2>\n<pre><code class=\"language-js\">// 顶部图例\nlegend: {\n\ttop: 22,\t// 同css定位top\n    right: 24,  // 同css定位right\n    itemGap:</code></pre>\n",
+            "url": "akiseele.top/posts/course/Echarts",
+            "title": "Echarts配置项",
+            "date_modified": "2022-06-22T12:00:55.000Z",
+            "date_published": "2023-08-10T13:21:06.000Z",
+            "author": {
+                "name": "Aki Seele",
+                "url": "https://valaxy.site"
+            }
+        },
+        {
+            "id": "",
+            "content_html": "<h3>方法名</h3>\n<blockquote>\n<p>初始化 <code>AkiGive()</code></p>\n<p>表单提交 <code>onSubmit()</code></p>\n<p>新增 <code>addFunc()</code></p>\n<p>删除 <code>deleteFunc()</code></p>\n</blockquote>\n",
+            "url": "akiseele.top/posts/NamingRules",
+            "title": "命名习惯规则",
+            "date_modified": "2023-07-06T16:00:55.000Z",
+            "date_published": "2023-07-06T16:21:06.000Z",
+            "author": {
+                "name": "Aki Seele",
+                "url": "https://valaxy.site"
+            }
+        },
+        {
+            "id": "",
+            "content_html": "<blockquote>\n<h5>小说地址</h5>\n<p><a href=\"https://pan.baidu.com/s/1iCHszockN0afIcNWT4aHOg?pwd=j7l4\">百度云</a> <em>提取码（j7l4）</em></p>\n</blockquote>\n",
+            "url": "akiseele.top/posts/novel/SAO",
+            "title": "刀剑神域",
+            "date_modified": "2023-07-02T11:03:55.000Z",
+            "date_published": "2023-07-02T12:21:06.000Z",
+            "author": {
+                "name": "Aki Seele",
+                "url": "https://valaxy.site"
+            }
+        },
+        {
+            "id": "",
+            "content_html": "<blockquote>\n<p>Ego_TDC24 大佬的配色</p>\n</blockquote>\n<h3>阿晴</h3>\n<ul>\n<li>#CEBDCD</li>\n<li>#B0BEEF</li>\n<li>#716AB0</li>\n</ul>\n<p>![阿晴](<a href=\"https://akiimage-131420985\">https://akiimage-131420985</a></p>\n",
+            "url": "akiseele.top/posts/ColorScheme",
+            "title": "配色方案",
+            "date_modified": "2023-04-10T16:00:55.000Z",
+            "date_published": "2023-04-10T16:21:06.000Z",
+            "author": {
+                "name": "Aki Seele",
+                "url": "https://valaxy.site"
+            }
+        },
+        {
+            "id": "",
+            "content_html": "<blockquote>\n<p><strong>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，Markdown文件的后缀名便是“.md”。</strong><br>\nMarkdown的语法十分简单，常用的标记符号不超过十</p>\n</blockquote>\n",
+            "url": "akiseele.top/posts/MDSyntax",
+            "title": "Markdown语法",
+            "date_modified": "2023-02-10T16:00:55.000Z",
+            "date_published": "2023-02-10T16:21:06.000Z",
+            "author": {
+                "name": "Aki Seele",
+                "url": "https://valaxy.site"
+            }
+        },
+        {
+            "id": "",
+            "content_html": "<blockquote>\n<p><a href=\"https://yuc.wiki/\">新番资讯</a> 全部参考 <a href=\"https://space.bilibili.com/30160\">长门有C</a> 大佬</p>\n</blockquote>\n<h2>原创动画</h2>\n<ul>\n<li>阿鲁斯的巨</li>\n</ul>\n",
+            "url": "akiseele.top/posts/animation/2023_1_Recom",
+            "title": "2023年1月新番推荐",
+            "date_modified": "2022-12-04T12:00:55.000Z",
+            "date_published": "2022-12-04T13:21:06.000Z",
+            "author": {
+                "name": "Aki Seele",
+                "url": "https://valaxy.site"
+            }
+        }
+    ]
+}
